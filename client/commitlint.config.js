@@ -1,26 +1,26 @@
 module.exports = {
-    extends: ["@commitlint/config-conventional"],
-    rules: {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "build",
-          "chore",
-          "ci",
-          "deps",
-          "docs",
-          "feat",
-          "fix",
-          "perf",
-          "refactor",
-          "revert",
-          "style",
-          "test",
-        ],
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "type-enum": [
+      2,
+      "always",
+      [
+        "build",
+        "chore",
+        "ci",
+        "deps",
+        "docs",
+        "feat",
+        "fix",
+        "perf",
+        "refactor",
+        "revert",
+        "style",
+        "test",
       ],
-    },
-  };
+    ],
+  },
+};
 
 // build: Changes that affect the build system or external dependencies.
 // chore: Minor changes that affect neither code nor tests, such as a change in .gitignore.
@@ -34,4 +34,3 @@ module.exports = {
 // revert: Undo a previous commit.
 // style: Changes that do not affect the meaning of the code (spaces, formatting, etc.).
 // test: Add or modify tests.
-
