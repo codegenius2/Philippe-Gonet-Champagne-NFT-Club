@@ -1,0 +1,91 @@
+.join_club_container {
+  margin-top: 191px;
+  /* 78.09640024405125 */
+}
+.join_club_title_and_mint_button_container {
+  display: flex;
+  justify-content: space-between;
+}
+.join_club_title_container {
+  color: #fff;
+  font-family: "red-hat-display";
+  font-size: 48px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 810px;
+}
+.join_club_mint_button_container {
+  width: 225px;
+  padding: 10px 40px;
+  height: 60px;
+  border-radius: 15px;
+  border: 1px solid #d5d5d5;
+  background: var(--Green-100, #a1d884);
+  color: var(--black, #000);
+  text-align: center;
+  font-family: "red-hat-display";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  box-shadow: 2px 2px 30px 10px #a1d884;
+  user-select: none;
+}
+.join_club_video_and_description {
+  /* width: 200px;
+  height: 200px; */
+  /* max-height: 580px; */
+  margin-top: 96px;
+  display: flex;
+  /* background-color: red; */
+}
+.join_club_video_container {
+  width: 540px;
+  height: 540px;
+  display: flex;
+  justify-content: flex-start;
+}
+.join_club_video_container video {
+  /* transform: scale(0.5); */
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
+  /* background:
+    url(<path-to-image>),
+    lightgray 50% / cover no-repeat;
+} */
+}
+.join_club_title_and_description_container {
+  margin-left: 147px;
+}
+.join_club_title_container {
+  font-size: 40px;
+  font-weight: 700;
+}
+.join_club_description_container {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 30px;
+}
+.join_club_know_more_container {
+  display: flex;
+  margin-top: 50px;
+  padding: 10px;
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  width: 180px;
+  cursor: pointer;
+  user-select: none;
+}
+.join_club_know_more_container:hover {
+  opacity: 0.7;
+  transition-duration: 300ms;
+}
+.join_club_know_more {
+  color: var(--Green-100, #a1d884);
+  font-size: 16px;
+  font-weight: 700;
+}
+.join_club_know_more_champagne_logo {
+  margin-left: 10px;
+}
