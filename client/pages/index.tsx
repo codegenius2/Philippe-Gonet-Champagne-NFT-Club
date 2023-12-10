@@ -10,6 +10,12 @@ const Home: NextPage = () => {
       <div className={styles.home_circle_background_top}></div>
       <div className={styles.home_circle_background_middle_left}></div>
       <div className={styles.home_circle_background_middle_right}></div>
+      <div className={styles.home_philippe_gonet_logo}>
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/philippe-gonnet-white-logo.svg?alt=media&token=905d7718-274e-484d-907f-5670534b4c1f"
+          alt=""
+        />
+      </div>
       <div className={styles.container}>
         <Navbar />
         <div className={styles.wrap}>

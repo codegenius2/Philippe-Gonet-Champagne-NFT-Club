@@ -43,6 +43,16 @@
   z-index: 212;
   /* overflow: hidden; */
 }
+.home_philippe_gonet_logo {
+  position: absolute;
+  opacity: 0.05;
+  top: 25vh;
+  left: 40vw;
+}
+.home_philippe_gonet_logo img { 
+  width: 389.131px;
+  height: 389.131px;
+}
 .home_circle_background_middle_right {
   position: absolute;
   right: -400px;
