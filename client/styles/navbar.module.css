@@ -2,9 +2,11 @@
   position: fixed;
   top: 0;
   width: 100vw !important;
+  z-index: 20;
 }
 .navbar_wrap {
-  height: 169px;
+  height: 120px;
+  /* background-color: red; */
   position: relative;
 }
 .navbar_logo_container {
@@ -15,6 +17,9 @@
   width: 100%;
   justify-content: center;
   user-select: none;
+}
+.navbar_logo_container img {
+transform: scale(0.8);
 }
 .navbar_menu_container {
   width: 400px;

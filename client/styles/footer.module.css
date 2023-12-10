@@ -1,0 +1,70 @@
+.footer_container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 33px;
+  background: #efefef;
+  color: #000;
+  text-align: center;
+  font-family: "red-hat-display";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  z-index: 300;
+}
+.footer_wrap {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px;
+}
+.footer_philippe_gonnet_logo_container {
+  display: flex;
+  align-items: center;
+}
+.footer_philippe_gonnet_logo_container img {
+  width: 26px;
+  height: 26px;
+  user-select: none;
+}
+.footer_menu_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  height: 100%;
+}
+.footer_menu_container {
+}
+.footer_menu_container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+}
+.footer_socials_menu_container {
+  width: 195px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer_socials_menu_container a {
+  display: flex;
+  align-items: center;
+}
+.footer_socials_menu_container img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.footer_menu_container a:hover,
+.footer_socials_menu_container img:hover {
+  opacity: 0.5 !important;
+  transition-duration: 300ms;
+}

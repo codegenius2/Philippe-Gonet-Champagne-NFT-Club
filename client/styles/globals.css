@@ -22,6 +22,9 @@ body {
   justify-content: center; */
   font-family: "red-hat-display";
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 button {
   background: none;
   border: none;
@@ -39,6 +42,17 @@ a {
 }
 :root {
   --Green-100: rgba(161, 216, 132, 1);
+}
+.progress-bar {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--Green-100);
+  transform-origin: 0%;
+  z-index: 230;
+  box-shadow: 2px 1px 20px 1px #a1d884;
 }
 @font-face {
   font-family: "red-hat-display";
