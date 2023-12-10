@@ -1,15 +1,21 @@
+// "use client"
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/navbar.module.css";
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // store the pixed scrolled for getting the navbar background black if the user refresh after a scroll
   useEffect(() => {
+    const storedScrollY = localStorage.getItem("scrollY");
+    if (storedScrollY && parseInt(storedScrollY, 10) > 20) {
+      setIsScrolled(true);
+    }
     const handleScroll = () => {
-      // si le scroll est de plus de 20ox alors isScrolled deviens true
-      setIsScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+      localStorage.setItem("scrollY", scrollY.toString());
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
