@@ -14,8 +14,21 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
+  background-color: #000;
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: #fff;
+  /* display: flex;
+  justify-content: center; */
+  font-family: "red-hat-display";
 }
-
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -23,4 +36,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+:root {
+  --Green-100: rgba(161, 216, 132, 1);
+}
+@font-face {
+  font-family: "red-hat-display";
+  /* src: url("./Assets/Fonts/Satoshi_Complete/Satoshi-Regular.otf") */
+  src: url("../assets/fonts/RedHatDisplay-Regular.otf") format("opentype");
 }
