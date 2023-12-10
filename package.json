@@ -1,0 +1,23 @@
+{
+  "name": "philippe-gonet-champagne-nft-club",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-JW-Corp/Philippe-Gonet-Champagne-NFT-Club.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-JW-Corp/Philippe-Gonet-Champagne-NFT-Club/issues"
+  },
+  "homepage": "https://github.com/The-JW-Corp/Philippe-Gonet-Champagne-NFT-Club#readme",
+  "dependencies": {
+    "husky": "^8.0.3"
+  }
+}
