@@ -3,7 +3,8 @@ import type { NextPage } from "next";
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
-// import FAQ from "../component/FAQ/FAQ.js";
+import Footer from "../component/Footer/Footer.js";
+import FAQ from "../component/FAQ/FAQ.js";
 const Home: NextPage = () => {
   return (
     <>
@@ -21,9 +22,10 @@ const Home: NextPage = () => {
         <div className={styles.wrap}>
           {/* <ConnectButton /> */}
           <JoinClub />
-          {/* <FAQ /> */}
+          <FAQ />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
