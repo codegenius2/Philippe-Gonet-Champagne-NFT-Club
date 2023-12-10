@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 43px;
+  height: 33px;
   background: #efefef;
   color: #000;
   text-align: center;
   font-family: "red-hat-display";
-  font-size: 16px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -26,8 +26,8 @@
   align-items: center;
 }
 .footer_philippe_gonnet_logo_container img {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   user-select: none;
 }
 .footer_menu_container {
@@ -58,8 +58,8 @@
   align-items: center;
 }
 .footer_socials_menu_container img {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 

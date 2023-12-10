@@ -5,7 +5,9 @@ import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
 import Footer from "../component/Footer/Footer.js";
 import FAQ from "../component/FAQ/FAQ.js";
+import { motion, useScroll } from "framer-motion";
 const Home: NextPage = () => {
+  const { scrollYProgress } = useScroll();
   return (
     <>
       <div className={styles.home_circle_background_top}></div>
@@ -19,6 +21,12 @@ const Home: NextPage = () => {
       </div>
       <div className={styles.container}>
         <Navbar />
+        <motion.div
+          className="progress-bar"
+          style={{
+            scaleX: scrollYProgress,
+          }}
+        />
         <div className={styles.wrap}>
           {/* <ConnectButton /> */}
           <JoinClub />

@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
 }
+
 .wrap {
   max-width: 1280px;
   width: 100%;
@@ -49,7 +50,7 @@
   top: 25vh;
   left: 40vw;
 }
-.home_philippe_gonet_logo img { 
+.home_philippe_gonet_logo img {
   width: 389.131px;
   height: 389.131px;
 }
