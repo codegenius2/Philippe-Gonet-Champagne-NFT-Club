@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/join-club.module.css";
 import MintButton from "../MintButton/MintButton";
-import Modal from "../Modal/Modal";
 function JoinClub({ handleMintButtonClick }) {
   const handleVideoEnd = (e) => {
     e.target.play();

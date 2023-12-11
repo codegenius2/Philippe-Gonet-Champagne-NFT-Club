@@ -7,6 +7,7 @@ import JoinClub from "../component/JoinClub/JoinClub.js";
 import Footer from "../component/Footer/Footer.js";
 import FAQ from "../component/FAQ/FAQ.js";
 import Modal from "../component/Modal/Modal.js";
+import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMembership.js";
 import { motion, useScroll } from "framer-motion";
 const Home: NextPage = () => {
   const { scrollYProgress } = useScroll();
@@ -39,7 +40,11 @@ const Home: NextPage = () => {
           <JoinClub handleMintButtonClick={handleMintButtonClick} />
           <FAQ />
         </div>
-        {isMintButtonClicked && <Modal></Modal>}
+        {isMintButtonClicked && (
+          <Modal>
+            <CheckoutMembership />
+          </Modal>
+        )}
       </div>
       <Footer />
     </>
