@@ -6,5 +6,4 @@ function MintButton() {
   );
 }
 
-export default MintButton; 
-  
+export default MintButton;

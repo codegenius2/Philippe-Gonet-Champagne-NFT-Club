@@ -4,7 +4,7 @@ function Question({ question, answer }) {
   const [isToggled, setIsToggled] = useState(false);
   function togglePlusMinus() {
     setIsToggled(!isToggled);
-  };
+  }
   return (
     <div
       className={styles.faq_questions_list_container}

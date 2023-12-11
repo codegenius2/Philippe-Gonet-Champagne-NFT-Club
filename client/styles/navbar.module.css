@@ -19,7 +19,7 @@
   user-select: none;
 }
 .navbar_logo_container img {
-transform: scale(0.8);
+  transform: scale(0.8);
 }
 .navbar_menu_container {
   width: 400px;

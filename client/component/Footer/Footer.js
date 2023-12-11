@@ -41,7 +41,7 @@ function Footer() {
           </a>
         </div>
         <div className={style.footer_socials_menu_container}>
-          <a target="_blank" href="https://discord.gg/QFUcrcgD">
+          <a target="_blank" href="https://discord.gg/evb3c6sSh7">
             <img src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/discord.svg?alt=media&token=61f2c8e7-320f-4218-9cc5-e25e3c36b00a" />
           </a>
           <a target="_blank" href="https://wa.me/message/WZZB6ATQWIKPN1">

@@ -41,7 +41,7 @@ const Home: NextPage = () => {
           <FAQ />
         </div>
         {isMintButtonClicked && (
-          <Modal>
+          <Modal setState={setIsMintButtonClicked}>
             <CheckoutMembership />
           </Modal>
         )}
