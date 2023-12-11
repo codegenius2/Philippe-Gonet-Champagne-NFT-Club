@@ -1,13 +1,21 @@
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
+import React, { useState } from "react";
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
 import Footer from "../component/Footer/Footer.js";
 import FAQ from "../component/FAQ/FAQ.js";
+import Modal from "../component/Modal/Modal.js";
+import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMembership.js";
 import { motion, useScroll } from "framer-motion";
 const Home: NextPage = () => {
   const { scrollYProgress } = useScroll();
+  const [isMintButtonClicked, setIsMintButtonClicked] =
+    useState<boolean>(false);
+  function handleMintButtonClick() {
+    setIsMintButtonClicked(true);
+  }
   return (
     <>
       <div className={styles.home_circle_background_top}></div>
@@ -29,9 +37,14 @@ const Home: NextPage = () => {
         />
         <div className={styles.wrap}>
           {/* <ConnectButton /> */}
-          <JoinClub />
+          <JoinClub handleMintButtonClick={handleMintButtonClick} />
           <FAQ />
         </div>
+        {isMintButtonClicked && (
+          <Modal setState={setIsMintButtonClicked}>
+            <CheckoutMembership />
+          </Modal>
+        )}
       </div>
       <Footer />
     </>

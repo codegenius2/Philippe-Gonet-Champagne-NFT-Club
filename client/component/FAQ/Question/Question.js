@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import styles from "../../../styles/faq.module.css";
 function Question({ question, answer }) {
   const [isToggled, setIsToggled] = useState(false);
-
-  const togglePlusMinus = () => {
+  function togglePlusMinus() {
     setIsToggled(!isToggled);
-  };
+  }
   return (
     <div
       className={styles.faq_questions_list_container}

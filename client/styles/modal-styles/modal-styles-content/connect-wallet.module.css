@@ -1,0 +1,10 @@
+.connect_wallet_container {
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+}
+.connect_wallet_title {
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+}

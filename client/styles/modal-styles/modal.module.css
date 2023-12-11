@@ -1,0 +1,43 @@
+.modal_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  width: 100vw;
+  /* height: 1000vh !important; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+.modal_wrap {
+  position: relative;
+  /* width: 100px;
+  height: 100px; */
+  width: 490px;
+  border-radius: 30px;
+  background: #000;
+  z-index: 21320;
+  /* top: 50%; */
+  /* left: ; */
+  animation: bounceIn 600ms both;
+  padding: 40px;
+  box-shadow: 2px 2px 30px 5px #a1d884;
+}
+@keyframes bounceIn {
+  0% {
+    transform: translateX(-30vw);
+  }
+  /* 70% {
+      transform: translateX(25%);
+    } */
+  75% {
+    transform: translateX(5vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
