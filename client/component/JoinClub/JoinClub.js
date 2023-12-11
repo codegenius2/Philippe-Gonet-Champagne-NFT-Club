@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../styles/join-club.module.css";
-// import champagneVideo from "../../assets/V06_CPG_nft_1080x1080.mp4";
-function JoinClub() {
+import MintButton from "../MintButton/MintButton";
+import Modal from "../Modal/Modal";
+function JoinClub({ handleMintButtonClick }) {
   const handleVideoEnd = (e) => {
     e.target.play();
   };
@@ -11,10 +12,8 @@ function JoinClub() {
         <div className={styles.join_club_title_container}>
           REJOIGNEZ LE CLUB CHAMPAGNE PHILIPPE GONET
         </div>
-        <div>
-          <button className={styles.join_club_mint_button_container}>
-            Mint NOW
-          </button>
+        <div onClick={handleMintButtonClick}>
+          <MintButton />
         </div>
       </div>
       <div className={styles.join_club_video_and_description}>
@@ -59,6 +58,8 @@ function JoinClub() {
         </div>
       </div>
     </div>
+    // <Modal>
+    // </Modal>
   );
 }
 

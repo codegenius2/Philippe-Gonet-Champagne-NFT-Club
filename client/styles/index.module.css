@@ -4,6 +4,7 @@
   /* background-color: red; */
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }
 
 .wrap {
