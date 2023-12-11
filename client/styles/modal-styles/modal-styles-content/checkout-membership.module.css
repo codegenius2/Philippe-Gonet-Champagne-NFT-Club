@@ -116,6 +116,19 @@
   font-style: normal;
   font-weight: 400;
   margin-top: 24px;
+  margin-bottom: 36px;
+}
+.checkout_membership_buttons_container {
+  display: flex;
+  justify-content: space-between;
+}
+.checkout_membership_loading_container{
+    position: relative;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 @keyframes slideInFromTop {
   0% {
