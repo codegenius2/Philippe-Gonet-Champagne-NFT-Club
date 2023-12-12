@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../../styles/join-club.module.css";
 import MintButton from "../MintButton/MintButton";
+import Video from "../Video/Video";
 function JoinClub({ handleMintButtonClick }) {
-  const handleVideoEnd = (e) => {
-    e.target.play();
-  };
+  // const handleVideoEnd = (e) => {
+  //   e.target.play();
+  // };
   return (
     <div className={styles.join_club_container}>
       <div className={styles.join_club_title_and_mint_button_container}>
@@ -16,7 +17,8 @@ function JoinClub({ handleMintButtonClick }) {
         </div>
       </div>
       <div className={styles.join_club_video_and_description}>
-        <div className={styles.join_club_video_container}>
+        <Video />
+        {/* <div className={styles.join_club_video_container}>
           <video
             autoPlay
             // controls
@@ -26,7 +28,7 @@ function JoinClub({ handleMintButtonClick }) {
             src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/V06_CPG_nft_1080x1080.mp4?alt=media&token=c988d654-d8ba-4bdd-ba51-c108986b0fa6"
             // src="/videos/V06_CPG_nft_1080x1080.mp4"
           ></video>
-        </div>
+        </div> */}
         <div className={styles.join_club_title_and_description_container}>
           <div className={styles.join_club_title_container}>Le CLUB</div>
           <div className={styles.join_club_description_container}>
