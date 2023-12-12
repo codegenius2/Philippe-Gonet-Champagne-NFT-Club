@@ -26,7 +26,7 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 212;
+  /* z-index: 212; */
 }
 .home_circle_background_middle_left {
   position: absolute;
@@ -42,7 +42,7 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 212;
+  /* z-index: 212; */
   /* overflow: hidden; */
 }
 .home_philippe_gonet_logo {
@@ -70,6 +70,6 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 213;
+  /* z-index: 213; */
   overflow-x: hidden;
 }

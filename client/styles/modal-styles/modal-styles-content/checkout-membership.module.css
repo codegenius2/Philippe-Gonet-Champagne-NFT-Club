@@ -1,5 +1,13 @@
 .checkout_membership_container {
 }
+/* If wallet connected */
+.checkout_membership_payout_title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+/*  */
 .checkout_membership_video_and_selector_container {
   display: flex;
 }
@@ -102,6 +110,11 @@
   font-weight: 700;
   line-height: normal;
 }
+.checkout_membership_price {
+  letter-spacing: 6px;
+  animation: slideInFromTop 0.3s ease-out;
+  min-width: 106px;
+}
 .checkout_membership_price_currency {
   font-weight: 400;
 }
@@ -122,14 +135,41 @@
   display: flex;
   justify-content: space-between;
 }
-.checkout_membership_loading_container{
-    position: relative;
-    width: 100%;
-    height: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.checkout_membership_loading_container {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+/* If wallet connected */
+.checkout_membership_payout_buttons_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 105px;
+}
+.checkout_membership_payout_buttons_container > div {
+  max-width: 100% !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.checkout_membership_payout_buttons_container img {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+}
+.checkout_membership_payout_wallet_logo_container img{
+  margin: 0px 5px;
+}
+.checkout_membership_payout_buttons_container > div > div {
+  display: flex;
+  align-items: center;
+}
+/*  */
 @keyframes slideInFromTop {
   0% {
     transform: translateY(-50%);
