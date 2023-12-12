@@ -4,7 +4,9 @@
   /* background-color: red; */
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }
+
 .wrap {
   max-width: 1280px;
   width: 100%;
@@ -24,7 +26,7 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 212;
+  /* z-index: 212; */
 }
 .home_circle_background_middle_left {
   position: absolute;
@@ -40,8 +42,18 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 212;
+  /* z-index: 212; */
   /* overflow: hidden; */
+}
+.home_philippe_gonet_logo {
+  position: absolute;
+  opacity: 0.05;
+  top: 25vh;
+  left: 40vw;
+}
+.home_philippe_gonet_logo img {
+  width: 389.131px;
+  height: 389.131px;
 }
 .home_circle_background_middle_right {
   position: absolute;
@@ -58,6 +70,6 @@
   /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  z-index: 213;
+  /* z-index: 213; */
   overflow-x: hidden;
 }
