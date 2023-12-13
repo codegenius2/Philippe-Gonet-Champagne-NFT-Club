@@ -20,8 +20,9 @@
 .nft_minted_validation_logo_container {
   margin-top: 40px;
 }
-.nft_minted_validation_logo_container:hover {
-  
+.nft_minted_validation_logo_container img {
+  animation-delay: 200ms;
+  animation: scale 700ms;
 }
 .nft_minted_get_acess_discord_description {
   font-weight: 700;
@@ -83,4 +84,15 @@
 .nft_minted_socials_logos_container > a > img {
   width: 35px;
   height: 35px;
+}
+@keyframes scale {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
