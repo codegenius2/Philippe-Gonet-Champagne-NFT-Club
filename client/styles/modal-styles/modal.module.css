@@ -1,5 +1,6 @@
 .modal_container {
   background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(21, 21, 21, 0.80); */
   position: fixed;
   width: 100vw;
   /* height: 1000vh !important; */
@@ -19,7 +20,7 @@
   height: 100px; */
   width: 490px;
   border-radius: 30px;
-  background: #000;
+  background: #000000;
   z-index: 21320;
   /* top: 50%; */
   /* left: ; */
