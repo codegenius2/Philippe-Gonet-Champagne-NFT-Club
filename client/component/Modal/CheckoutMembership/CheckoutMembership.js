@@ -49,12 +49,12 @@ function CheckoutMembership() {
   }
 
   useEffect(() => {
-    if (quantityCount === 1) { 
-      setPrice(315); 
+    if (quantityCount === 1) {
+      setPrice(315);
     } else {
       setPrice(630);
     }
-  }, [quantityCount]); 
+  }, [quantityCount]);
   return (
     <>
       {isMintLoading ? (

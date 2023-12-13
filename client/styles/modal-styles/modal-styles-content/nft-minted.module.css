@@ -1,5 +1,5 @@
-.nft_minted_container {
-}
+/* .nft_minted_container {
+} */
 .nft_minted_video_and_validation_message_container {
   display: flex;
 }
@@ -29,6 +29,9 @@
   font-size: 14px;
   margin-top: 66px;
   text-align: center;
+}
+.nft_minted_get_access_discord_form {
+  position: relative;
 }
 .nft_minted_get_access_discord_form input {
   font-family: "red-hat-display";
@@ -60,6 +63,43 @@
 .nft_minted_get_access_discord_input:focus {
   box-shadow: 2px 2px 20px 5px #a1d884;
   transition-duration: 300ms;
+}
+.nft_minted_get_access_discord_error_message {
+  position: absolute;
+  bottom: -35%;
+  left: 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: red;
+}
+.nft_minted_get_access_discord_send_mail_button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  position: absolute;
+  top: 46%;
+  right: 5%;
+  transform: rotate(270deg);
+  cursor: pointer;
+}
+
+.nft_minted_get_access_discord_send_mail_button:hover {
+  transform: scale(1.2);
+  transform: rotate(630deg);
+  filter: invert(1);
+  border: 2px solid var(--Green-100);
+  transition-duration: 300ms;
+}
+.nft_minted_get_access_discord_send_mail_button:active {
+  transform: scale(1.2);
+  transform: rotate(270deg);
+}
+.nft_minted_get_access_discord_send_mail_button img {
+  transform: scale(1.2);
 }
 .nft_minted_socials_description {
   text-align: center;

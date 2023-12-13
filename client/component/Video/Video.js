@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "../../styles/video.module.css";
-function Video({size}) {
+function Video({ size }) {
   const handleVideoEnd = (e) => {
     e.target.play();
   };
   return (
-    <div className={size === "small" ? styles.video_container_small: styles.video_container}>
+    <div
+      className={
+        size === "small" ? styles.video_container_small : styles.video_container
+      }
+    >
       <video
         autoPlay
         // controls
