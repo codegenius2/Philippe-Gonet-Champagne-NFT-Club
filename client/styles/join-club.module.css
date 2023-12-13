@@ -40,22 +40,6 @@
   display: flex;
   /* background-color: red; */
 }
-.join_club_video_container {
-  width: 540px;
-  height: 540px;
-  display: flex;
-  justify-content: flex-start;
-}
-.join_club_video_container video {
-  /* transform: scale(0.5); */
-  border-top: 1px solid var(--Green-100, #a1d884);
-  border-bottom: 1px solid var(--Green-100, #a1d884);
-  border-left: 1px solid var(--Green-100, #a1d884);
-  /* background:
-    url(<path-to-image>),
-    lightgray 50% / cover no-repeat;
-} */
-}
 .join_club_title_and_description_container {
   margin-left: 147px;
 }

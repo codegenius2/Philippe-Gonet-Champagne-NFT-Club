@@ -11,17 +11,7 @@
 .checkout_membership_video_and_selector_container {
   display: flex;
 }
-.checkout_membership_video_container {
-  width: 162px;
-  height: 162px;
-}
-.checkout_membership_video_container video {
-  width: 162px;
-  height: 162px;
-  border-top: 1px solid var(--Green-100, #a1d884);
-  border-bottom: 1px solid var(--Green-100, #a1d884);
-  border-left: 1px solid var(--Green-100, #a1d884);
-}
+
 .checkout_membership_selector_bloc_container {
   height: 165px;
   margin-left: 56px;
@@ -162,12 +152,53 @@
   height: 20px;
   border-radius: 5px;
 }
-.checkout_membership_payout_wallet_logo_container img{
+.checkout_membership_payout_wallet_logo_container img {
   margin: 0px 5px;
 }
 .checkout_membership_payout_buttons_container > div > div {
   display: flex;
   align-items: center;
+}
+/* If mint with wallet is clicked */
+
+.checkout_membership_payout_loading_mint_wallet_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: fit-content; */
+}
+.checkout_membership_payout_loading_mint_wallet {
+  position: relative;
+  display: inline-block;
+  width: 250px; /* Adjust size as needed */
+  height: 250px; /* Adjust size as needed */
+  border: 4px solid transparent;
+  border-top-color: var(--Green-100, #a1d884); /* Color of the loading arc */
+  border-radius: 50%; /* Makes it a circle */
+  animation: spin 5s linear infinite;
+  /* background-color: red; */
+}
+.checkout_membership_payout_loading_mint_wallet:after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 13%;
+  width: 8px; /* Size of the dot */
+  height: 8px; /* Size of the dot */
+  background-color: var(--Green-100, #a1d884); /* Color of the dot */
+  border-radius: 50%; /* Makes it a circle */
+  animation: spin 2s linear infinite; /* Same animation as the loading circle */
+}
+
+.checkout_membership_payout_loading_mint_wallet_image_container img {
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 30%;
+  width: 160px;
+  height: 160px;
+  /* background-color: green; */
 }
 /*  */
 @keyframes slideInFromTop {
@@ -178,5 +209,13 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

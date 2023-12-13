@@ -12,7 +12,9 @@ import {
   base,
   zora,
 } from "wagmi/chains";
+import { ModalProvider } from "../contexts/ModalContext";
 import { publicProvider } from "wagmi/providers/public";
+import Head from "next/head";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -24,7 +26,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
   ],
-  [publicProvider()],
+  [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
@@ -42,11 +44,19 @@ const wagmiConfig = createConfig({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <>
+      <Head>
+        <title>My page title</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={chains}>
+          <ModalProvider>
+            <Component {...pageProps} />
+          </ModalProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </>
   );
 }
 
