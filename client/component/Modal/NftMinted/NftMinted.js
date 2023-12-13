@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
 function NftMinted() {
+  const [email, setEmail] = useState({
+    value: "",
+    errorMessage: false,
+    sent: false,
+    loading: false,
+  });
+  // const [launchAnimation, setLaunchAnimation] = useState();
+  function handleEmailChange(event) {
+    const emailValue = event.target.value;
+    setEmail({ ...email, value: emailValue });
+    const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    setEmail({
+      ...email,
+      errorMessage: !emailRegex.test(emailValue)
+        ? "Adresse e-mail invalide"
+        : "",
+    });
+  }
+
+  function handleKeyDown(event) {
+    // If there is no error message send it to backend
+    if (event.key === "Enter" && !email.errorMessage) {
+      // verifyFormIsValid();
+      console.log("call to database for send the mail ", email.errorMessage);
+    }
+  }
   return (
     <div className={styles.nft_minted_container}>
       <div className={styles.nft_minted_video_and_validation_message_container}>
@@ -22,14 +48,34 @@ function NftMinted() {
       <div className={styles.nft_minted_get_acess_discord_description}>
         Pour avoir accès au discord nous avons besoin de votre email{" "}
       </div>
-      <form className={styles.nft_minted_get_access_discord_form}>
+      <div className={styles.nft_minted_get_access_discord_form}>
         <input
           className={styles.nft_minted_get_access_discord_input}
           placeholder="e-mail"
           type="email"
           required
+          onKeyDown={handleKeyDown}
+          onChange={handleEmailChange}
         />
-      </form>
+        <div className={styles.nft_minted_get_access_discord_error_message}>
+          {email.errorMessage && <p>{email.errorMessage}</p>}
+        </div>
+        <button
+          className={styles.nft_minted_get_access_discord_send_mail_button}
+          style={
+            email.errorMessage === false
+              ? { opacity: "0.5" }
+              : email.errorMessage === "Adresse e-mail invalide"
+                ? { opacity: "0.5" }
+                : { opacity: "1" }
+          }
+        >
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/arrow-bottom.svg?alt=media&token=76cef9a9-f215-41f7-9585-b951b6535e6c"
+            alt=""
+          />
+        </button>
+      </div>
       <div className={styles.nft_minted_socials_description}>
         Suivez-nous sur nos réseaux sociaux
       </div>
