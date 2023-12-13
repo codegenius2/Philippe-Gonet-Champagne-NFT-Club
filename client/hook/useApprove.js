@@ -7,17 +7,19 @@ import {
   useAccount,
   useWalletClient,
 } from "wagmi";
-import { getAddress, fromHex } from "viem";
+import { getAddress, fromHex, parseUnits } from "viem";
 import USDC_Polygon from "../contracts/USDC_Polygon.json";
 import {
   USDC_POLYGON_ADDRESS,
   USDC_MUMBAI_ADDRESS,
   ClubCPG_POLYGON_ADDRESS,
   ClubCPG_MUMBAI_ADDRESS,
-} from "@/utils/constant.ts";
+} from "@/utils/constant";
+import { useEffect, useState } from "react";
 
 export const useApprove = ({ priceInUSDC }) => {
   const { address, isConnected } = useAccount(); //TODO: Check user connection and network can be abstract and before function call
+  const [approveState, setApproveState] = useState({});
 
   // Tx construction
   const { config: USDC_APPROVAL } = usePrepareContractWrite({
@@ -26,7 +28,9 @@ export const useApprove = ({ priceInUSDC }) => {
     functionName: "approve",
     args: [
       ClubCPG_MUMBAI_ADDRESS, //TODO: Dynamic
-      priceInUSDC,
+      priceInUSDC
+        ? parseUnits(Number(priceInUSDC).toString(), 6)
+        : parseUnits("0", 6),
     ],
   });
 
@@ -48,13 +52,13 @@ export const useApprove = ({ priceInUSDC }) => {
     hash: approveUSDCData?.hash,
   });
 
-  return (
+  return {
     isWaitingApproveUSDCSignatureFromUser,
     isApproveUSDCTxSent,
     approveUSDCDataMethod,
     approveUSDCReceipt,
     approveUSDCIsError,
     approveUSDCIsLoading,
-    approveUSDCError
-  );
+    approveUSDCError,
+  };
 };
