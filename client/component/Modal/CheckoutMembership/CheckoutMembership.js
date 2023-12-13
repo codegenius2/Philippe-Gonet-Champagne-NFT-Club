@@ -4,16 +4,27 @@ import Button from "../../Button/Button";
 import LoadingAnimation from "../../LoadingAnimation/LoadingAnimation";
 import Video from "../../Video/Video";
 import { useModalContext } from "../../../contexts/ModalContext";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import {
+  usePrepareSendTransaction,
+  useSendTransaction,
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  useAccount,
+  useWalletClient,
+} from "wagmi";
+import { getAddress, fromHex } from "viem";
+import ClubCPG from "../../../contracts/ClubCPG.json";
 function CheckoutMembership() {
   const [isPlusToggled, setIsPlusToggled] = useState(false);
   const [isMinusToggled, setIsMinusToggled] = useState(false);
   const [quantityCount, setQuantityCount] = useState(1);
   const [price, setPrice] = useState();
-  const [isLoading, setIsLoading] = useState();
+  // const [waitingWalletConnection, setWaitingWalletConnection] = useState();
   const [isMintLoading, setIsMintLoading] = useState();
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
   const { setMintWithWalletSuccessull } = useModalContext();
+  const { address, isConnected } = useAccount();
 
   function togglePlusMinus() {
     setIsPlusToggled(!isPlusToggled);
@@ -33,13 +44,13 @@ function CheckoutMembership() {
       setIsMinusToggled(!isMinusToggled);
     }
   }
-  function handleClickHaveWallet() {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsWalletConnected(true);
-    }, 500);
-  }
+  // function handleClickHaveWallet() {
+  //   setWaitingWalletConnection(true);
+  //   setTimeout(() => {
+  //     setWaitingWalletConnection(false);
+  //     setIsWalletConnected(true);
+  //   }, 500);
+  // }
   function handleMintWithWallet() {
     setIsMintLoading(true);
     setTimeout(() => {
@@ -49,12 +60,12 @@ function CheckoutMembership() {
   }
 
   useEffect(() => {
-    if (quantityCount === 1) { 
-      setPrice(315); 
+    if (quantityCount === 1) {
+      setPrice(315);
     } else {
       setPrice(630);
     }
-  }, [quantityCount]); 
+  }, [quantityCount]);
   return (
     <>
       {isMintLoading ? (
@@ -82,10 +93,22 @@ function CheckoutMembership() {
       ) : (
         <>
           <div className={styles.checkout_membership_container}>
-            {isWalletConnected && (
-              <div className={styles.checkout_membership_payout_title}>
-                Paiement
-              </div>
+            {isConnected && (
+              <>
+                <div
+                  className={styles.checkout_membership_payout_title_container}
+                >
+                  <span className={styles.checkout_membership_payout_title}>
+                    Paiement
+                  </span>
+                  <ConnectButton
+                    coolMode
+                    label="Connect wallet"
+                    chainStatus="none"
+                    showBalance={false}
+                  />
+                </div>
+              </>
             )}
             <div
               className={
@@ -152,7 +175,7 @@ function CheckoutMembership() {
               </div>
             </div>
             <div
-              style={isWalletConnected ? { marginBottom: "40px" } : {}}
+              style={isConnected ? { marginBottom: "40px" } : {}}
               className={styles.checkout_membership_price_container}
             >
               <div className={styles.checkout_membership_price} key={price}>
@@ -162,7 +185,7 @@ function CheckoutMembership() {
                 USDC
               </div>
             </div>
-            {!isWalletConnected && (
+            {!isConnected && (
               <div className={styles.checkout_membership_explanation}>
                 <div className={styles.checkout_membership_explanation_title}>
                   Le CLUB
@@ -176,57 +199,65 @@ function CheckoutMembership() {
               </div>
             )}
             <div className={styles.checkout_membership_buttons_container}>
-              {isLoading ? (
-                <>
-                  <div className={styles.checkout_membership_loading_container}>
-                    <LoadingAnimation />
-                  </div>
-                </>
-              ) : isWalletConnected ? (
-                <>
-                  <div
-                    className={
-                      styles.checkout_membership_payout_buttons_container
-                    }
-                    onClick={handleMintWithWallet}
-                  >
-                    <Button size="small">
-                      <div>Payer avec mon wallet</div>
-                      <div
-                        className={
-                          styles.checkout_membership_payout_wallet_logo_container
-                        }
-                      >
-                        <img
-                          src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                          alt=""
-                        />
+              {
+                // waitingWalletConnection ? (
+                //   <>
+                //     <div className={styles.checkout_membership_loading_container}>
+                //       <LoadingAnimation />
+                //     </div>
+                //   </>
+                // ) :
+                isConnected ? (
+                  <>
+                    <div
+                      className={
+                        styles.checkout_membership_payout_buttons_container
+                      }
+                      onClick={handleMintWithWallet}
+                    >
+                      <Button size="small">
+                        <div>Payer avec mon wallet</div>
+                        <div
+                          className={
+                            styles.checkout_membership_payout_wallet_logo_container
+                          }
+                        >
+                          <img
+                            src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                            alt=""
+                          />
 
-                        <img
-                          src="https://www.rainbowkit.com/rainbow.svg"
-                          alt=""
-                        />
-                      </div>
-                    </Button>
+                          <img
+                            src="https://www.rainbowkit.com/rainbow.svg"
+                            alt=""
+                          />
+                        </div>
+                      </Button>
+                      <Button size="small">
+                        <div>Payer par carte bancaire</div>
+                        <div>
+                          <img
+                            src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/crossmint.svg?alt=media&token=2383cc02-1f5c-43ff-8964-7a86ca450e0a"
+                            alt=""
+                          />
+                        </div>
+                      </Button>
+                    </div>
+                  </>
+                ) : (
+                  <>
                     <Button size="small">
-                      <div>Payer par carte bancaire</div>
-                      <div>
-                        <img
-                          src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/crossmint.svg?alt=media&token=2383cc02-1f5c-43ff-8964-7a86ca450e0a"
-                          alt=""
-                        />
-                      </div>
+                      <ConnectButton
+                        coolMode
+                        label="Connect wallet"
+                        chainStatus="none"
+                        showBalance={false}
+                      />
                     </Button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <Button handleClick={handleClickHaveWallet} size="small">
-                    J'ai un wallet
-                  </Button>
-                  <Button size="small">Je n'ai pas de wallet</Button>
-                </>
-              )}
+                    <Button size="small">Je n'ai pas de wallet</Button>
+                  </>
+                )
+              }
             </div>
           </div>
         </>
