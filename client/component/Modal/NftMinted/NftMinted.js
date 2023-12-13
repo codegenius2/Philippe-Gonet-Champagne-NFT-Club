@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
+
 function NftMinted() {
   const [email, setEmail] = useState({
     value: "",
@@ -20,7 +23,6 @@ function NftMinted() {
         : "",
     });
   }
-
   function handleKeyDown(event) {
     // If there is no error message send it to backend
     if (event.key === "Enter" && !email.errorMessage) {
@@ -28,6 +30,34 @@ function NftMinted() {
       console.log("call to database for send the mail ", email.errorMessage);
     }
   }
+  // useEffect(() => {
+  //   try {
+  //     const docRef = addDoc(collection(db, "mail_address"), {
+  //       mail: "mail@mail.com",
+  //     });
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // }, []);
+  const mailAddressCollectionRef = collection(db, "mail_address");
+  useEffect(() => {
+    // const addMailToCollection = async () => {
+    const mailData = {
+      mail: "mail@mail.com",
+      // Autres champs de données associés au mail
+    };
+
+    try {
+      addDoc(mailAddressCollectionRef, mailData);
+      console.log("Mail successfully added!");
+    } catch (e) {
+      console.error("Error adding mail: ", e);
+    }
+    // };
+
+    // addMailToCollection();
+  }, []);
   return (
     <div className={styles.nft_minted_container}>
       <div className={styles.nft_minted_video_and_validation_message_container}>
