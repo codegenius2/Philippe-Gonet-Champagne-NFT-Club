@@ -1,0 +1,9 @@
+[submodule "foundry/lib/erc721a"]
+	path = foundry/lib/erc721a
+	url = https://github.com/chiru-labs/erc721a
+[submodule "foundry/lib/openzeppelin-contracts"]
+	path = foundry/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "foundry/lib/stablecoin-evm"]
+	path = foundry/lib/stablecoin-evm
+	url = https://github.com/circlefin/stablecoin-evm
