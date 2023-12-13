@@ -1,7 +1,86 @@
 .nft_minted_container {
 }
-.nft_minted_video_and_validation_message {
+.nft_minted_video_and_validation_message_container {
   display: flex;
 }
+.nft_minted_validation_message_and_logo {
+  margin-left: 50px;
+}
 .nft_minted_validation_message_container {
+  width: 100%;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nft_minted_validation_message_container p {
+  font-size: 20px;
+  font-weight: 600;
+}
+.nft_minted_validation_logo_container {
+  margin-top: 40px;
+}
+.nft_minted_validation_logo_container:hover {
+  
+}
+.nft_minted_get_acess_discord_description {
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 66px;
+  text-align: center;
+}
+.nft_minted_get_access_discord_form input {
+  font-family: "red-hat-display";
+}
+.nft_minted_get_access_discord_input {
+  width: 100%;
+  height: 46px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  background: var(--Green-100, #a1d884);
+  margin-top: 28px;
+  caret-color: black;
+  font-weight: 700;
+  font-size: 16px;
+}
+.nft_minted_get_access_discord_input::placeholder {
+  color: #616161;
+  font-size: 20px;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 22%;
+  align-items: center;
+  /* background-color: red; */
+}
+.nft_minted_get_access_discord_input:hover,
+.nft_minted_get_access_discord_input:focus {
+  box-shadow: 2px 2px 20px 5px #a1d884;
+  transition-duration: 300ms;
+}
+.nft_minted_socials_description {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+.nft_minted_socials_logos_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 13px;
+}
+.nft_minted_socials_logos_container a {
+  margin: 0px 10px;
+}
+.nft_minted_socials_logos_container a:hover {
+  opacity: 0.7;
+  transition-duration: 300ms;
+}
+.nft_minted_socials_logos_container > a > img {
+  width: 35px;
+  height: 35px;
 }

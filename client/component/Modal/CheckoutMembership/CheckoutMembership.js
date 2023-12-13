@@ -3,6 +3,8 @@ import styles from "../../../styles/modal-styles/modal-styles-content/checkout-m
 import Button from "../../Button/Button";
 import LoadingAnimation from "../../LoadingAnimation/LoadingAnimation";
 import Video from "../../Video/Video";
+import { useModalContext } from "../../../contexts/ModalContext";
+
 function CheckoutMembership() {
   const [isPlusToggled, setIsPlusToggled] = useState(false);
   const [isMinusToggled, setIsMinusToggled] = useState(false);
@@ -11,10 +13,8 @@ function CheckoutMembership() {
   const [isLoading, setIsLoading] = useState();
   const [isMintLoading, setIsMintLoading] = useState();
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [mintWithWalletSuccessFull, setMintWithWalletSuccessull] = useState();
-  function handleVideoEnd(e) {
-    e.target.play();
-  }
+  const { setMintWithWalletSuccessull } = useModalContext();
+
   function togglePlusMinus() {
     setIsPlusToggled(!isPlusToggled);
     handleCountClick();
@@ -42,17 +42,19 @@ function CheckoutMembership() {
   }
   function handleMintWithWallet() {
     setIsMintLoading(true);
-    // setTimeout(() => {
-    //   setIsMintLoading(false);
-    // }, 500000);
+    setTimeout(() => {
+      setIsMintLoading(false);
+      setMintWithWalletSuccessull(true);
+    }, 2000);
   }
+
   useEffect(() => {
-    if (quantityCount === 1) {
-      setPrice(315);
+    if (quantityCount === 1) { 
+      setPrice(315); 
     } else {
       setPrice(630);
     }
-  }, [quantityCount]);
+  }, [quantityCount]); 
   return (
     <>
       {isMintLoading ? (

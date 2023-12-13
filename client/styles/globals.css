@@ -27,12 +27,26 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 button {
   background: none;
   border: none;
   padding: 0;
   margin: 0;
   outline: 0;
+}
+p {
+  margin: 0;
 }
 a {
   color: inherit;
