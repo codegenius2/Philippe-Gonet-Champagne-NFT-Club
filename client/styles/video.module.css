@@ -1,10 +1,21 @@
-.video_container_small {
+.video_container_xtra_small {
   width: 162px;
   height: 162px;
 }
-.video_container_small video {
+.video_container_xtra_small video {
   width: 162px;
   height: 162px;
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
+}
+.video_container_small {
+  width: 420px;
+  height: 420px;
+}
+.video_container_small video {
+  width: 420px;
+  height: 420px;
   border-top: 1px solid var(--Green-100, #a1d884);
   border-bottom: 1px solid var(--Green-100, #a1d884);
   border-left: 1px solid var(--Green-100, #a1d884);

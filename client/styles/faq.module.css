@@ -64,3 +64,14 @@
   overflow: hidden;
   max-height: 0;
 }
+@media (max-width: 950px) {
+  .faq_title {
+    font-size: 30px;
+  }
+  .faq_question_and_plus_button div {
+    font-size: 15px;
+  }
+  .faq_answer{
+    font-size: 14px;
+  }
+}

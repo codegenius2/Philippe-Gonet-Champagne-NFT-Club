@@ -31,7 +31,7 @@ function NftMinted() {
   return (
     <div className={styles.nft_minted_container}>
       <div className={styles.nft_minted_video_and_validation_message_container}>
-        <Video size="small" />
+        <Video size="xtra-small" />
         <div className={styles.nft_minted_validation_message_and_logo}>
           <div className={styles.nft_minted_validation_message_container}>
             <p>Paiement validé !</p>

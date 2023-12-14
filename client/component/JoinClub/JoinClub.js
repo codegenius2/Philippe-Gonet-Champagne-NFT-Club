@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/join-club.module.css";
-import MintButton from "../MintButton/MintButton";
 import Video from "../Video/Video";
 function JoinClub({ handleMintButtonClick }) {
-  // const handleVideoEnd = (e) => {
-  //   e.target.play();
-  // };
+  const [windowWidth, setWindowWidth] = useState();
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.join_club_container}>
       <div className={styles.join_club_title_and_mint_button_container}>
@@ -13,11 +20,17 @@ function JoinClub({ handleMintButtonClick }) {
           REJOIGNEZ LE CLUB CHAMPAGNE PHILIPPE GONET
         </div>
         <div onClick={handleMintButtonClick}>
-          <MintButton />
+          <button className={styles.join_club_mint_button_container}>
+            Mint NOW
+          </button>
         </div>
       </div>
       <div className={styles.join_club_video_and_description}>
-        <Video size="medium" />
+        <Video
+          size={
+            windowWidth < 950 ? "small" : windowWidth < 1450 ? "medium" : ""
+          }
+        />
         <div className={styles.join_club_title_and_description_container}>
           <div className={styles.join_club_title_club_container}>Le CLUB</div>
           <div className={styles.join_club_description_container}>

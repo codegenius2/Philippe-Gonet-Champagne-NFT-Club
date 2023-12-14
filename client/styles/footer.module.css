@@ -37,8 +37,6 @@
   width: 600px;
   height: 100%;
 }
-.footer_menu_container {
-}
 .footer_menu_container a {
   display: flex;
   align-items: center;
@@ -67,4 +65,13 @@
 .footer_socials_menu_container img:hover {
   opacity: 0.5 !important;
   transition-duration: 300ms;
+}
+@media (max-width: 950px) {
+  .footer_menu_container{
+    width: 450px;
+    font-size: 13px;
+  }
+  .footer_socials_menu_container {
+    width: 130px;
+  }
 }
