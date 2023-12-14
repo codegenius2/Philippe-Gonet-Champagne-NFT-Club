@@ -6,7 +6,8 @@
 }
 .navbar_wrap {
   height: 120px;
-  /* background-color: red; */
+  /* max-width: 1280px;
+  background-color: red; */
   position: relative;
 }
 .navbar_logo_container {
@@ -22,27 +23,38 @@
   transform: scale(0.8);
 }
 .navbar_menu_container {
-  width: 400px;
+  /* width: 400px; */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   height: 100%;
   /* background-color: green; */
-  position: absolute;
+  position: relative;
   /* right: 142px; */
-  right: 5%;
+  /* right: 5%; */
   display: flex;
   align-items: center;
-  font-family: "red-hat-display";
+  justify-content: center;
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   user-select: none;
+}
+.navbar_menu_wrap {
+  /* position: absolute; */
+  /* width: 400px; */
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* background-color: green; */
 }
 .navbar_menu_our_history,
 .navbar_menu_vintage,
 .navbar_menu_club {
   cursor: pointer;
+  padding: 20px;
 }
 .navbar_menu_our_history:hover,
 .navbar_menu_vintage:hover,
@@ -51,12 +63,23 @@
   transition: 300ms;
 }
 
-/* .navbar_menu_our_history {
-    cursor: pointer;
+@media (max-width: 1450px) {
+  .navbar_menu_wrap {
+    max-width: 1220px;
+  }
 }
-.navbar_menu_our_vintage {
-    cursor: pointer;
+@media (max-width: 1350px) {
+  .navbar_menu_wrap {
+    max-width: 1000px;
+  }
 }
-.navbar_menu_our_club {
-  cursor: pointer;
-} */
+@media (max-width: 1150px) {
+  .navbar_menu_wrap {
+    max-width: 950px;
+  }
+}
+@media (max-width: 1050px) {
+  .navbar_menu_wrap {
+    max-width: 850px;
+  }
+}

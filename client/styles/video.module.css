@@ -1,9 +1,3 @@
-.video_container {
-  width: 540px;
-  height: 540px;
-  display: flex;
-  justify-content: flex-start;
-}
 .video_container_small {
   width: 162px;
   height: 162px;
@@ -14,6 +8,23 @@
   border-top: 1px solid var(--Green-100, #a1d884);
   border-bottom: 1px solid var(--Green-100, #a1d884);
   border-left: 1px solid var(--Green-100, #a1d884);
+}
+.video_container_medium {
+  width: 450px;
+  height: 450px;
+}
+.video_container_medium video {
+  width: 450px;
+  height: 450px;
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
+}
+.video_container {
+  width: 540px;
+  height: 540px;
+  display: flex;
+  justify-content: flex-start;
 }
 .video_container video {
   border-top: 1px solid var(--Green-100, #a1d884);

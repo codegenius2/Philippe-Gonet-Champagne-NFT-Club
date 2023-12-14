@@ -30,27 +30,29 @@ function Navbar() {
           />
         </div>
         <div className={styles.navbar_menu_container}>
-          <a
-            href="https://www.champagne-philippe-gonet.com/notre-histoire/"
-            target="_blank"
-            className={styles.navbar_menu_our_history}
-          >
-            Notre histoire
-          </a>
-          <a
-            href="https://www.champagne-philippe-gonet.com/cuvees/"
-            target="_blank"
-            className={styles.navbar_menu_vintage}
-          >
-            Nos cuvées
-          </a>
-          <a
-            href="https://www.champagne-philippe-gonet.com/club/"
-            target="_blank"
-            className={styles.navbar_menu_club}
-          >
-            Le club
-          </a>
+          <div className={styles.navbar_menu_wrap}>
+            <a
+              href="https://www.champagne-philippe-gonet.com/notre-histoire/"
+              target="_blank"
+              className={styles.navbar_menu_our_history}
+            >
+              Notre histoire
+            </a>
+            <a
+              href="https://www.champagne-philippe-gonet.com/cuvees/"
+              target="_blank"
+              className={styles.navbar_menu_vintage}
+            >
+              Nos cuvées
+            </a>
+            <a
+              href="https://www.champagne-philippe-gonet.com/club/"
+              target="_blank"
+              className={styles.navbar_menu_club}
+            >
+              Le club
+            </a>
+          </div>
         </div>
       </div>
     </div>

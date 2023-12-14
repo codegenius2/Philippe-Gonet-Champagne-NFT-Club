@@ -92,15 +92,24 @@
     font-size: 40px !important;
   }
   .join_club_title_and_description_container{
-   /* padding-right:20px ;  */
-   /* background-color: red; */
-   margin-left: 50px;
+    /* padding-right:20px ;  */
+    /* background-color: red; */
+    margin-left: 50px;
   }
   .join_club_description_container{
     max-width: 480px;
   }
   
 }
-@media (max-width:1250px) {
+@media (max-width:1150px) {
   
+  .join_club_title_container{
+    font-size: 30px !important;
+  }
+  .join_club_title_club_container{
+    font-size: 25px;
+  }
+  .join_club_description_container{
+  font-size: 16px;
+  }
 }

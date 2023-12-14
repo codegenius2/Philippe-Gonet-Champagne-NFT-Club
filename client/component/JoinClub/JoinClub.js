@@ -17,9 +17,9 @@ function JoinClub({ handleMintButtonClick }) {
         </div>
       </div>
       <div className={styles.join_club_video_and_description}>
-        <Video />
+        <Video size="medium" />
         <div className={styles.join_club_title_and_description_container}>
-          <div className={styles.join_club_title_container}>Le CLUB</div>
+          <div className={styles.join_club_title_club_container}>Le CLUB</div>
           <div className={styles.join_club_description_container}>
             Le Club Membre Philippe Gonet propose une expérience exclusive
             offerte par la maison de champagne Philippe Gonet, réputée pour son
