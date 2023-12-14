@@ -10,7 +10,8 @@ import "../src/ClubCPG.sol";
 contract DeployClubCPG is Script {
     string _name = "test";
     string _symbol = "test";
-    string _uri = "https://uri.com";
+    string _uri =
+        "https://fuchsia-capable-roundworm-590.mypinata.cloud/ipfs/QmVNN7rd4DnmedcWFttENGpoNtnrFWFouPjcG1VVHqHcFn";
     uint8 _maxWallet = 3;
     uint256 _maxSupply = 300;
     uint256 _price = 1 * 10 ** 6;
