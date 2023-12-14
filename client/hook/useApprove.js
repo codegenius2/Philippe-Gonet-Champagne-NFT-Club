@@ -1,13 +1,10 @@
 import {
-  usePrepareSendTransaction,
-  useSendTransaction,
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
   useAccount,
-  useWalletClient,
 } from "wagmi";
-import { getAddress, fromHex, parseUnits } from "viem";
+import { parseUnits } from "viem";
 import USDC_Polygon from "../contracts/USDC_Polygon.json";
 import {
   USDC_POLYGON_ADDRESS,
@@ -15,11 +12,10 @@ import {
   ClubCPG_POLYGON_ADDRESS,
   ClubCPG_MUMBAI_ADDRESS,
 } from "@/utils/constant";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const useApprove = ({ priceInUSDC }) => {
+export const useApprove = (priceInUSDC) => {
   const { address, isConnected } = useAccount(); //TODO: Check user connection and network can be abstract and before function call
-  const [approveState, setApproveState] = useState({});
 
   // Tx construction
   const { config: USDC_APPROVAL } = usePrepareContractWrite({
@@ -28,9 +24,7 @@ export const useApprove = ({ priceInUSDC }) => {
     functionName: "approve",
     args: [
       ClubCPG_MUMBAI_ADDRESS, //TODO: Dynamic
-      priceInUSDC
-        ? parseUnits(Number(priceInUSDC).toString(), 6)
-        : parseUnits("0", 6),
+      parseUnits(`${priceInUSDC}`, 6),
     ],
   });
 
@@ -39,7 +33,7 @@ export const useApprove = ({ priceInUSDC }) => {
     data: approveUSDCData,
     isLoading: isWaitingApproveUSDCSignatureFromUser,
     isSuccess: isApproveUSDCTxSent,
-    write: approveUSDCDataMethod,
+    write: approveUSDCMethod,
   } = useContractWrite(USDC_APPROVAL);
 
   // Tx validated by the network
@@ -55,7 +49,7 @@ export const useApprove = ({ priceInUSDC }) => {
   return {
     isWaitingApproveUSDCSignatureFromUser,
     isApproveUSDCTxSent,
-    approveUSDCDataMethod,
+    approveUSDCMethod,
     approveUSDCReceipt,
     approveUSDCIsError,
     approveUSDCIsLoading,

@@ -28,6 +28,10 @@ export const USDC_MUMBAI_ADDRESS = "0xFEca406dA9727A25E71e732F9961F680059eF1F9";
 export const ClubCPG_POLYGON_ADDRESS =
   "0x39Cd103414106b922Eb09c7D45dF89608B59E887"; //TODO: ADD real one
 export const ClubCPG_MUMBAI_ADDRESS =
-  "0x371A5168eedbF0A6986cbF15da4534eec7996dc7";
+  "0x159b53bc313c7901C3Cd4b952bF4776a410b495A";
 
+// Should come from BC call
 export const MAX_QUANTITY_NFT = 3;
+
+// Should come from BC call
+export const PRICE = 320;

@@ -17,47 +17,53 @@ import {
 import { getAddress, fromHex } from "viem";
 import ClubCPG from "@/contracts/ClubCPG.json";
 import { useApprove } from "@/hook/useApprove.js";
-import { MAX_QUANTITY_NFT } from "@/utils/constant";
+import { useMint } from "@/hook/useMint.js";
+import { MAX_QUANTITY_NFT, PRICE } from "@/utils/constant";
 function CheckoutMembership() {
   const [isPlusToggled, setIsPlusToggled] = useState(false);
   const [isMinusToggled, setIsMinusToggled] = useState(false);
   const [quantityCount, setQuantityCount] = useState(1);
-  const [price, setPrice] = useState(0);
-  const [isMintLoading, setIsMintLoading] = useState();
+  const [totalPrice, setTotalPrice] = useState(PRICE);
   const { setMintWithWalletSuccessull } = useModalContext();
   const { address, isConnected } = useAccount();
   const {
     isWaitingApproveUSDCSignatureFromUser,
     isApproveUSDCTxSent,
-    approveUSDCDataMethod,
+    approveUSDCMethod,
     approveUSDCReceipt,
     approveUSDCIsError,
     approveUSDCIsLoading,
     approveUSDCError,
-  } = useApprove(price);
+  } = useApprove(totalPrice);
 
-  // bouton + qui devient -
+  const {
+    isWaitingMintSignatureFromUser,
+    isMintTxSent,
+    mintMethod,
+    mintReceipt,
+    mintIsError,
+    mintIsLoading,
+    mintError,
+  } = useMint(address, quantityCount);
+
+  useEffect(() => {
+    if (approveUSDCReceipt) {
+      mintMethod({ from: address });
+    }
+  }, [approveUSDCReceipt]);
+
   function handleCountPlusMinusClick() {
     if (isPlusToggled) {
       handleCountMinusClick();
       return;
     }
     setQuantityCount(quantityCount + 1);
-    // setIsPlusToggled(!isPlusToggled);
-    // handleCountClick();
   }
 
-  // bouton -
   function handleCountMinusClick() {
     if (quantityCount > 1) {
       setQuantityCount(quantityCount - 1);
     }
-
-    // if (quantityCount === 2) {
-    //   setQuantityCount(1);
-    //   setIsPlusToggled(!isPlusToggled);
-    //   setIsMinusToggled(!isMinusToggled);
-    // }
   }
 
   useEffect(() => {
@@ -67,34 +73,14 @@ function CheckoutMembership() {
     if (isPlusToggled) {
       setIsPlusToggled(false);
     }
+    setTotalPrice(PRICE * quantityCount);
   }, [quantityCount]);
 
-  function handleCountClick() {
-    // if (quantityCount === 1) {
-    //   setQuantityCount(2);
-    // } else {
-    //   setQuantityCount(1);
-    // }
-  }
-
-  // function handleMintWithWallet() {
-  //   setIsMintLoading(true);
-  //   setTimeout(() => {
-  //     setIsMintLoading(false);
-  //     setMintWithWalletSuccessull(true);
-  //   }, 2000);
-  // }
-
-  // useEffect(() => {
-  //   if (quantityCount === 1) {
-  //     setPrice(315);
-  //   } else {
-  //     setPrice(630);
-  //   }
-  // }, [quantityCount]);
   return (
     <>
-      {isMintLoading ? (
+      {approveUSDCIsLoading ||
+      isWaitingMintSignatureFromUser ||
+      mintIsLoading ? (
         <>
           <div
             className={
@@ -127,7 +113,12 @@ function CheckoutMembership() {
                   <span className={styles.checkout_membership_payout_title}>
                     Paiement
                   </span>
-                  <ConnectButton coolMode label="Connect wallet" />
+                  <ConnectButton
+                    coolMode
+                    label="Connect wallet"
+                    chainStatus="none"
+                    showBalance={false}
+                  />
                 </div>
               </>
             )}
@@ -199,8 +190,11 @@ function CheckoutMembership() {
               style={isConnected ? { marginBottom: "40px" } : {}}
               className={styles.checkout_membership_price_container}
             >
-              <div className={styles.checkout_membership_price} key={price}>
-                {price}
+              <div
+                className={styles.checkout_membership_price}
+                key={totalPrice}
+              >
+                {totalPrice}
               </div>
               <div className={styles.checkout_membership_price_currency}>
                 USDC
@@ -234,7 +228,7 @@ function CheckoutMembership() {
                       className={
                         styles.checkout_membership_payout_buttons_container
                       }
-                      onClick={approveUSDCDataMethod}
+                      onClick={approveUSDCMethod}
                     >
                       <Button size="small">
                         <div>Payer avec mon wallet</div>
