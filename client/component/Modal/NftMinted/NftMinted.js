@@ -3,6 +3,7 @@ import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted
 import Video from "../../Video/Video";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 function NftMinted() {
   const [email, setEmail] = useState({
@@ -41,23 +42,77 @@ function NftMinted() {
   //   }
   // }, []);
   const mailAddressCollectionRef = collection(db, "mail_address");
+  // useEffect(() => {
+  //   // const addMailToCollection = async () => {
+  //   const mailData = {
+  //     mail: "mail@mail.com",
+  //     // Autres champs de données associés au mail
+  //   };
+
+  //   try {
+  //     addDoc(mailAddressCollectionRef, mailData);
+  //     console.log("Mail successfully added!");
+  //   } catch (e) {
+  //     console.error("Error adding mail: ", e);
+  //   }
+  //   // };
+
+  //   // addMailToCollection();
+  // }, []);
+
+  // useEffect(() => {
+  //   // La fonction async vous permet d'utiliser await à l'intérieur
+  //   const addMailToCollection = async () => {
+  //     const mailData = {
+  //       mail: "mail@mail.com",
+  //     };
+
+  //     try {
+  //       const docRef = await addDoc(mailAddressCollectionRef, mailData);
+  //       console.log("Mail successfully added with ID: ", docRef.id);
+  //     } catch (e) {
+  //       console.error("Error adding mail: ", e);
+  //     }
+  //   };
+
+  //   addMailToCollection(); // Appelez la fonction async définie ci-dessus
+  // }, []);
+  // useEffect(() => {
+  //   const addMailToCollection = async () => {
+  //     console.log("Tentative d'ajout de mail en cours...");
+
+  //     try {
+  //       const docRef = await addDoc(mailAddressCollectionRef, {
+  //         mail: "mail@mail.com",
+  //       });
+  //       console.log("Mail ajouté avec succès avec ID : ", docRef.id);
+  //     } catch (e) {
+  //       console.error("Erreur lors de l'ajout du mail : ", e);
+  //     }
+  //   };
+
+  //   addMailToCollection();
+  // }, []);
   useEffect(() => {
-    // const addMailToCollection = async () => {
-    const mailData = {
-      mail: "mail@mail.com",
-      // Autres champs de données associés au mail
+    // Créer une fonction asynchrone pour appeler updateDoc
+    const updateFieldInDoc = async () => {
+      // Obtenir une référence au document avec l'ID spécifié
+      const docRef = doc(db, "mail_address", "wPoNU3T3zhGmAQt6SS2Q");
+
+      try {
+        // Mettre à jour le document avec le nouveau champ
+        await updateDoc(docRef, {
+          mail1: "mail@mail.com",
+        });
+        console.log("Champ ajouté avec succès");
+      } catch (error) {
+        console.error("Erreur lors de l ajout du champ :", error);
+      }
     };
 
-    try {
-      addDoc(mailAddressCollectionRef, mailData);
-      console.log("Mail successfully added!");
-    } catch (e) {
-      console.error("Error adding mail: ", e);
-    }
-    // };
-
-    // addMailToCollection();
+    updateFieldInDoc();
   }, []);
+
   return (
     <div className={styles.nft_minted_container}>
       <div className={styles.nft_minted_video_and_validation_message_container}>
