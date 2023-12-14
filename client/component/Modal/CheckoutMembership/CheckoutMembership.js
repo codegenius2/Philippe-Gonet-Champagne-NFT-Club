@@ -284,7 +284,7 @@ function CheckoutMembership() {
                             _quantity: `${quantityCount}`,
                           }}
                           environment="staging"
-                          mintTo="0x6a60b9D963623AFf1E947D1f6c8a5eC6CF7EdC7B"
+                          mintTo={`${address}`}
                         />
                         {/* <div>Payer par carte bancaire</div>
                         <div>
@@ -300,7 +300,7 @@ function CheckoutMembership() {
                   <>
                     {isNoWalletButtonClicked ? (
                       <Button size="medium">
-                        {/* <CrossmintPayButton
+                        <CrossmintPayButton
                           collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
                           projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
                           mintConfig={{
@@ -308,8 +308,7 @@ function CheckoutMembership() {
                             _quantity: `${quantityCount}`,
                           }}
                           environment="staging"
-                          mintTo="0xd423DCBd697164e282717009044312fDBC6C04f0"
-                        /> */}
+                        />
                       </Button>
                     ) : (
                       <>
