@@ -146,3 +146,27 @@
     font-size: 12px;
   }
 }
+@media (max-width: 750px) {
+  .join_club_video_and_description {
+    margin-top: 60px;
+  }
+  .join_club_title_container {
+    font-size: 24px !important;
+    max-width: 360px;
+    /* background-color: red; */
+  }
+  .join_club_title_club_container {
+    font-size: 18px;
+  }
+  .join_club_title_and_description_container {
+    margin-left: 30px;
+  }
+  .join_club_description_container {
+    padding: 0px;
+
+    font-size: 11.5px;
+  }
+  .join_club_know_more_container {
+    margin-top: 28px;
+  }
+}

@@ -9,11 +9,13 @@ function Video({ size }) {
       className={
         size === "xtra-small"
           ? styles.video_container_xtra_small
-          : size === "small"
-            ? styles.video_container_small
-            : size === "medium"
-              ? styles.video_container_medium
-              : styles.video_container
+          : size === "very-small"
+            ? styles.video_container_very_small
+            : size === "small"
+              ? styles.video_container_small
+              : size === "medium"
+                ? styles.video_container_medium
+                : styles.video_container
       }
     >
       <video

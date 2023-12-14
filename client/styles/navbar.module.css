@@ -103,3 +103,14 @@
     max-width: 700px;
   }
 }
+@media (max-width: 750px) {
+  .navbar_menu_wrap {
+    max-width: 600px;
+  }
+  .navbar_menu_our_history,
+  .navbar_menu_vintage,
+  .navbar_menu_club {
+    font-size: 11px;
+    padding: 5px;
+  }
+}

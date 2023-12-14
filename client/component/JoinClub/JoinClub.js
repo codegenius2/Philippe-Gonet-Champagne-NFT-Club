@@ -28,7 +28,13 @@ function JoinClub({ handleMintButtonClick }) {
       <div className={styles.join_club_video_and_description}>
         <Video
           size={
-            windowWidth < 950 ? "small" : windowWidth < 1450 ? "medium" : ""
+            windowWidth < 750
+              ? "very-small"
+              : windowWidth < 950
+                ? "small"
+                : windowWidth < 1450
+                  ? "medium"
+                  : ""
           }
         />
         <div className={styles.join_club_title_and_description_container}>

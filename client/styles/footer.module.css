@@ -67,11 +67,20 @@
   transition-duration: 300ms;
 }
 @media (max-width: 950px) {
-  .footer_menu_container{
+  .footer_menu_container {
     width: 450px;
     font-size: 13px;
   }
   .footer_socials_menu_container {
     width: 130px;
+  }
+}
+@media (max-width: 750px) {
+  .footer_menu_container {
+    width: 380px;
+    font-size: 11px;
+  }
+  .footer_socials_menu_container {
+    width: 120px;
   }
 }

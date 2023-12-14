@@ -9,6 +9,17 @@
   border-bottom: 1px solid var(--Green-100, #a1d884);
   border-left: 1px solid var(--Green-100, #a1d884);
 }
+.video_container_very_small {
+  width: 362px;
+  height: 362px;
+}
+.video_container_very_small video {
+  width: 362px;
+  height: 362px;
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
+}
 .video_container_small {
   width: 420px;
   height: 420px;
