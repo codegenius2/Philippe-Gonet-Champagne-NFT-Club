@@ -73,3 +73,15 @@
   /* z-index: 213; */
   overflow-x: hidden;
 }
+@media(max-width: 1450px) {
+.wrap{
+  /* background-color: red; */
+  max-width: 1200px;
+}
+}
+@media(max-width: 1350px) {
+.wrap{
+  /* background-color: red; */
+  max-width: 1000px;
+}
+}
