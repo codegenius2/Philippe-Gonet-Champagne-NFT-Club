@@ -73,3 +73,27 @@
   /* z-index: 213; */
   overflow-x: hidden;
 }
+@media (max-width: 1450px) {
+  .wrap {
+    /* background-color: red; */
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1350px) {
+  .wrap {
+    
+    max-width: 1000px;
+  }
+}
+@media (max-width: 1150px) {
+  .wrap {
+    /* background-color: red; */
+    max-width: 950px;
+  }
+}
+@media (max-width: 1050px) {
+  .wrap {
+    /* background-color: red; */
+    max-width: 850px;
+  }
+}
