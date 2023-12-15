@@ -85,11 +85,14 @@
 }
 /* Tablet format */
 @media (max-width: 950px) {
+  .navbar_wrap {
+    height: 80px;
+  }
   .navbar_menu_wrap {
     max-width: 800px;
   }
   .navbar_logo_container img {
-    transform: scale(0.65);
+    transform: scale(0.45);
   }
 
   .navbar_menu_our_history,

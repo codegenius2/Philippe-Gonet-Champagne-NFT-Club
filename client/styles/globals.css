@@ -97,3 +97,8 @@ html {
   /* src: url("./Assets/Fonts/Satoshi_Complete/Satoshi-Regular.otf") */
   src: url("../assets/fonts/RedHatDisplay-Regular.otf") format("opentype");
 }
+@media (max-width: 950px) {
+  .progress-bar {
+    top: 80px;
+  }
+}
