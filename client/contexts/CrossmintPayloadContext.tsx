@@ -34,3 +34,5 @@ export const CrossmintProvider = ({ children }: CrossmintProviderProps) => {
     </CrossmintPayloadContext.Provider>
   );
 };
+
+export default CrossmintPayloadContext;

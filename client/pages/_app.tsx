@@ -16,6 +16,7 @@ import {
 import { ModalProvider } from "../contexts/ModalContext";
 import { publicProvider } from "wagmi/providers/public";
 import Head from "next/head";
+import { CrossmintProvider } from "@/contexts/CrossmintPayloadContext";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -55,7 +56,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <WagmiConfig config={wagmiConfig}>
         <RainbowKitProvider chains={chains}>
           <ModalProvider>
-            <Component {...pageProps} />
+            <CrossmintProvider>
+              <Component {...pageProps} />
+            </CrossmintProvider>
           </ModalProvider>
         </RainbowKitProvider>
       </WagmiConfig>
