@@ -3,7 +3,7 @@ import styles from "../../styles/button.module.css";
 function Button({ handleClick, children, size }) {
   return (
     <div
-      onClick={handleClick}
+      onClick={() => handleClick}
       className={
         size === "xtra-small"
           ? styles.button_container_xtra_small

@@ -71,10 +71,12 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
     uint8 private constant MAX_PARTNERSHIP_MINT = 5; // Should be replaced
 
     // Wallet to receive NFTs mint for partnership
-    address private constant PARTNERSHIP_ADDRESS = address(0); // Should be replaced
+    address private constant PARTNERSHIP_ADDRESS =
+        0x9BB91139461f877fA36367c10bBaB0Aace02FA33; // Should be replaced
 
     // Wallet to receive USDC from mint function
-    address private constant RECEIPT_ADDRESS = address(1); // Should be replaced
+    address private constant RECEIPT_ADDRESS =
+        0x6eAAb9AEA2564ED104bCa59A134eeFA71B14DC19; // Should be replaced
 
     // ================================================================
     // │                          MAPPING                             │
@@ -269,10 +271,10 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
             address(this),
             totalPrice
         );
-        if (success) revert ClubCPG__CannotTransferUsdcToContract();
+        if (!success) revert ClubCPG__CannotTransferUsdcToContract();
 
         bool success2 = i_usdcAddress.transfer(RECEIPT_ADDRESS, totalPrice);
-        if (success2) revert ClubCPG__CannotTransferUsdcToReceiptAddress();
+        if (!success2) revert ClubCPG__CannotTransferUsdcToReceiptAddress();
         _mint(_to, _quantity);
 
         emit ClubCPG__Mint(

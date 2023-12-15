@@ -1,6 +1,10 @@
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
+<<<<<<< HEAD
 import React, { use, useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> main
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
@@ -10,7 +14,8 @@ import Modal from "../component/Modal/Modal.js";
 import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMembership.js";
 import NftMinted from "../component/Modal/NftMinted/NftMinted.js";
 import { motion, useScroll } from "framer-motion";
-import { useModalContext } from "../contexts/ModalContext";
+import { useModalContext } from "@/contexts/ModalContext";
+import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 const Home: NextPage = () => {
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
@@ -18,8 +23,36 @@ const Home: NextPage = () => {
   function handleMintButtonClick() {
     setIsMintButtonClicked(true);
   }
-  const { mintWithWalletSuccessFull, windowWidth, setWindowWidth } =
+  const { mintWithWalletSuccessFull, setMintWithWalletSuccessull } =
     useModalContext();
+  const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
+  const [crossmintPayLoadLocalStorage, setCrossmintPayLoadLocalStorage] =
+    useState(null);
+
+  useEffect(() => {
+    if (
+      crossmintPayLoadLocalStorage != null &&
+      //@ts-ignore
+      crossmintPayLoadLocalStorage.status === "success"
+    ) {
+      setMintWithWalletSuccessull(true);
+      return;
+    }
+    // Display error
+  }, [crossmintPayLoadLocalStorage]);
+
+  useEffect(() => {
+    window.addEventListener(
+      "storage",
+      () => {
+        const storedPayload = localStorage.getItem("crossmintPayload");
+        if (storedPayload) {
+          setCrossmintPayLoadLocalStorage(JSON.parse(storedPayload));
+        }
+      },
+      false
+    );
+  }, []);
   return (
     <>
       <div className={styles.home_circle_background_top}></div>
