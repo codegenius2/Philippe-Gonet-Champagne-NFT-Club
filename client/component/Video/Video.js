@@ -7,7 +7,11 @@ function Video({ size }) {
   return (
     <div
       className={
-        size === "small" ? styles.video_container_small : styles.video_container
+        size === "small"
+          ? styles.video_container_small
+          : size === "medium"
+            ? styles.video_container_medium
+            : styles.video_container
       }
     >
       <video
