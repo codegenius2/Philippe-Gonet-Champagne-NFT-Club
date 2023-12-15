@@ -50,6 +50,7 @@ function CheckoutMembership() {
   } = useMint(address, quantityCount);
 
   useEffect(() => {
+    //TODO: condition should be the receipt status
     if (approveUSDCReceipt) {
       setIsTimeoutApproveActive(true);
       setTimeout(() => {
@@ -58,6 +59,13 @@ function CheckoutMembership() {
       }, 10000);
     }
   }, [approveUSDCReceipt]);
+
+  useEffect(() => {
+    //TODO: condition should be the receipt status
+    if (mintReceipt) {
+      setMintWithWalletSuccessull(true);
+    }
+  }, [mintReceipt]);
 
   function handleNoWalletButtonClick(e) {
     e.preventDefault();
@@ -285,6 +293,7 @@ function CheckoutMembership() {
                           }}
                           environment="staging"
                           mintTo={`${address}`}
+                          successCallbackURL="http://localhost:3000/crossmintpayload"
                         />
                         {/* <div>Payer par carte bancaire</div>
                         <div>
@@ -308,6 +317,7 @@ function CheckoutMembership() {
                             _quantity: `${quantityCount}`,
                           }}
                           environment="staging"
+                          successCallbackURL="http://localhost:3000/crossmintpayload"
                         />
                       </Button>
                     ) : (
