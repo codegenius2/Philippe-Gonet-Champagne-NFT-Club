@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   }
   const { mintWithWalletSuccessFull, setMintWithWalletSuccessull } =
     useModalContext();
-  const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
+  // const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
   const [crossmintPayLoadLocalStorage, setCrossmintPayLoadLocalStorage] =
     useState(null);
 
