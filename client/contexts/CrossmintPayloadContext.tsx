@@ -11,7 +11,9 @@ const CrossmintPayloadContext = createContext<ModalContextType | null>(null);
 export const useCrossmintPayloadContext = () => {
   const crossmintContext = useContext(CrossmintPayloadContext);
   if (!crossmintContext) {
-    throw new Error("useModalContext must be used within a ModalProvider");
+    throw new Error(
+      "useCrossmintContext must be used within a CrossmintProvider"
+    );
   }
   return crossmintContext;
 };

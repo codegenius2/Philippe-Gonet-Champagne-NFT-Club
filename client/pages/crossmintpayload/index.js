@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./CrossmintPayload.css";
 // import { useLocation } from "react-router-dom";
 import { useSearchParams } from "next/navigation";
-import useCrossmintPayloadContext from "@/lib/context/CrossmintPayloadContext/useCrossmintPayload";
+import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 
 const CrossmintPayload = () => {
   //   const location = useLocation();
