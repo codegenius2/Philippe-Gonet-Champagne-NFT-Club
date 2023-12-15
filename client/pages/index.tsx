@@ -75,7 +75,11 @@ const Home: NextPage = () => {
         </div>
         {isMintButtonClicked && (
           <Modal setState={setIsMintButtonClicked}>
-            {mintWithWalletSuccessFull ? <NftMinted /> : <CheckoutMembership />}
+            {!mintWithWalletSuccessFull ? (
+              <NftMinted />
+            ) : (
+              <CheckoutMembership />
+            )}
           </Modal>
         )}
       </div>

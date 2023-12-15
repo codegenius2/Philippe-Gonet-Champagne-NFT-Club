@@ -1,117 +1,65 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
 
 function NftMinted() {
+  const [checkboxState, setCheckboxState] = useState({
+    checkbox1: false,
+    checkbox2: false,
+  });
+  const animationURL =
+    "https://lottie.host/93e43ecb-ee95-4780-a6bd-dd26d40a0e0a/6M8E5VrpAK.json";
   const [email, setEmail] = useState({
     value: "",
     errorMessage: false,
     sent: false,
     loading: false,
   });
-  // const [launchAnimation, setLaunchAnimation] = useState();
+
+  function handleCheckboxClick(e) {
+    if (e.target.id === "checkbox1") {
+      setCheckboxState({ checkbox1: true, checkbox2: false });
+      return;
+    }
+    setCheckboxState({ checkbox1: false, checkbox2: true });
+  }
+
   function handleEmailChange(event) {
     const emailValue = event.target.value;
-    setEmail({ ...email, value: emailValue });
     const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
     setEmail({
       ...email,
       errorMessage: !emailRegex.test(emailValue)
         ? "Adresse e-mail invalide"
         : "",
+      value: emailValue,
     });
   }
   function handleKeyDown(event) {
-    // If there is no error message send it to backend
     if (event.key === "Enter" && !email.errorMessage) {
-      // verifyFormIsValid();
+      handleEmailPushToFirebase(event);
       console.log("call to database for send the mail ", email.errorMessage);
     }
   }
-  // useEffect(() => {
-  //   try {
-  //     const docRef = addDoc(collection(db, "mail_address"), {
-  //       mail: "mail@mail.com",
-  //     });
-  //     console.log("Document written with ID: ", docRef.id);
-  //   } catch (e) {
-  //     console.error("Error adding document: ", e);
-  //   }
-  // }, []);
-  const mailAddressCollectionRef = collection(db, "mail_address");
-  // useEffect(() => {
-  //   // const addMailToCollection = async () => {
-  //   const mailData = {
-  //     mail: "mail@mail.com",
-  //     // Autres champs de données associés au mail
-  //   };
-
-  //   try {
-  //     addDoc(mailAddressCollectionRef, mailData);
-  //     console.log("Mail successfully added!");
-  //   } catch (e) {
-  //     console.error("Error adding mail: ", e);
-  //   }
-  //   // };
-
-  //   // addMailToCollection();
-  // }, []);
-
-  // useEffect(() => {
-  //   // La fonction async vous permet d'utiliser await à l'intérieur
-  //   const addMailToCollection = async () => {
-  //     const mailData = {
-  //       mail: "mail@mail.com",
-  //     };
-
-  //     try {
-  //       const docRef = await addDoc(mailAddressCollectionRef, mailData);
-  //       console.log("Mail successfully added with ID: ", docRef.id);
-  //     } catch (e) {
-  //       console.error("Error adding mail: ", e);
-  //     }
-  //   };
-
-  //   addMailToCollection(); // Appelez la fonction async définie ci-dessus
-  // }, []);
-  // useEffect(() => {
-  //   const addMailToCollection = async () => {
-  //     console.log("Tentative d'ajout de mail en cours...");
-
-  //     try {
-  //       const docRef = await addDoc(mailAddressCollectionRef, {
-  //         mail: "mail@mail.com",
-  //       });
-  //       console.log("Mail ajouté avec succès avec ID : ", docRef.id);
-  //     } catch (e) {
-  //       console.error("Erreur lors de l'ajout du mail : ", e);
-  //     }
-  //   };
-
-  //   addMailToCollection();
-  // }, []);
-  useEffect(() => {
-    // Créer une fonction asynchrone pour appeler updateDoc
-    const updateFieldInDoc = async () => {
-      // Obtenir une référence au document avec l'ID spécifié
-      const docRef = doc(db, "mail_address", "wPoNU3T3zhGmAQt6SS2Q");
-
-      try {
-        // Mettre à jour le document avec le nouveau champ
-        await updateDoc(docRef, {
-          mail1: "mail@mail.com",
-        });
-        console.log("Champ ajouté avec succès");
-      } catch (error) {
-        console.error("Erreur lors de l ajout du champ :", error);
-      }
-    };
-
-    updateFieldInDoc();
-  }, []);
+  async function handleEmailPushToFirebase(e) {
+    e.preventDefault();
+    try {
+      const docRef = await addDoc(collection(db, "mail_address"), {
+        mail: email,
+        type: checkboxState.checkbox1
+          ? "SELF"
+          : checkboxState.checkbox2
+            ? "GIFT"
+            : "Sent without tell",
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   return (
     <div className={styles.nft_minted_container}>
@@ -142,7 +90,10 @@ function NftMinted() {
           onKeyDown={handleKeyDown}
           onChange={handleEmailChange}
         />
-        <div className={styles.nft_minted_get_access_discord_error_message}>
+        <div
+          onClick={handleEmailPushToFirebase}
+          className={styles.nft_minted_get_access_discord_error_message}
+        >
           {email.errorMessage && <p>{email.errorMessage}</p>}
         </div>
         <button
@@ -160,6 +111,52 @@ function NftMinted() {
             alt=""
           />
         </button>
+      </div>
+      <div className={styles.nft_minted_mail_reason_container}>
+        <div>
+          <span>Pour moi</span>
+          {checkboxState.checkbox1 ? (
+            <Player
+              autoplay
+              keepLastFrame
+              src={animationURL}
+              style={{ height: "33.75px", width: "33.75px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          ) : (
+            <div
+              onClick={handleCheckboxClick}
+              id="checkbox1"
+              className={styles.nft_minted_checkbox_container}
+            ></div>
+          )}
+        </div>
+        <div>
+          <span>Pour offrir</span>
+          {checkboxState.checkbox2 ? (
+            <Player
+              autoplay
+              keepLastFrame
+              src={animationURL}
+              style={{ height: "33.75px", width: "33.75px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          ) : (
+            <div
+              onClick={handleCheckboxClick}
+              id="checkbox2"
+              className={styles.nft_minted_checkbox_container}
+            ></div>
+          )}
+        </div>
       </div>
       <div className={styles.nft_minted_socials_description}>
         Suivez-nous sur nos réseaux sociaux
