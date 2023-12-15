@@ -75,3 +75,14 @@
     font-size: 14px;
   }
 }
+@media (max-width:650px) {
+  .faq_title {
+    font-size: 20px;
+  }
+  .faq_question_and_plus_button div {
+    font-size: 12px;
+  }
+  .faq_answer{
+    font-size: 11px;
+  }
+}

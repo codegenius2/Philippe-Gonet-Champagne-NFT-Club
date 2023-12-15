@@ -47,15 +47,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>My page title</title>
-        <meta property="og:title" content="My page title" key="title" />
+        <meta
+          property="og:Philippe Gonet"
+          content="Philippe Gonet Mintpage"
+          key="Philippe Gonet"
+        />
       </Head>
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={chains}>
-          <ModalProvider>
-            <Component {...pageProps} />
-          </ModalProvider>
-        </RainbowKitProvider>
-      </WagmiConfig>
+      <div className="page-container">
+        <WagmiConfig config={wagmiConfig}>
+          <RainbowKitProvider chains={chains}>
+            <ModalProvider>
+              <Component {...pageProps} />
+            </ModalProvider>
+          </RainbowKitProvider>
+        </WagmiConfig>
+      </div>
     </>
   );
 }

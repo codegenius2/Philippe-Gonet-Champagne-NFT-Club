@@ -59,6 +59,20 @@ a {
 :root {
   --Green-100: rgba(161, 216, 132, 1);
 }
+html {
+  /* background-color: violet !important; */
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  /* justify-content: flex-start */
+}
+.page-container {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: visible;
+}
 .progress-bar {
   position: fixed;
   top: 120px;
@@ -73,6 +87,11 @@ a {
 .scroll-lock {
   overflow-y: hidden !important;
 }
+/* html {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+} */
 @font-face {
   font-family: "red-hat-display";
   /* src: url("./Assets/Fonts/Satoshi_Complete/Satoshi-Regular.otf") */

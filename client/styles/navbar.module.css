@@ -91,6 +91,7 @@
   .navbar_logo_container img {
     transform: scale(0.65);
   }
+
   .navbar_menu_our_history,
   .navbar_menu_vintage,
   .navbar_menu_club {
@@ -112,5 +113,30 @@
   .navbar_menu_club {
     font-size: 11px;
     padding: 5px;
+  }
+}
+@media (max-width: 650px) {
+  .navbar_menu_wrap {
+    max-width: 500px;
+  }
+  .navbar_logo_container img {
+    transform: scale(0.53);
+  }
+  .navbar_menu_our_history,
+  .navbar_menu_vintage,
+  .navbar_menu_club {
+    font-size: 9px;
+    padding: 5px;
+  }
+}
+@media (max-width: 550px) {
+  .navbar_menu_wrap {
+    max-width: 400px;
+  }
+  .navbar_menu_our_history,
+  .navbar_menu_vintage,
+  .navbar_menu_club {
+    font-size: 8px;
+    padding: 3px;
   }
 }
