@@ -5,8 +5,12 @@ interface ModalContextType {
   setMintWithWalletSuccessull: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const ModalContext = createContext<ModalContextType | null>(null);
+
 export function useModalContext() {
   const context = useContext(ModalContext);
+  if (!context) {
+    throw new Error("useModalContext must be used within a ModalProvider");
+  }
   return context;
 }
 interface ModalProviderProps {
