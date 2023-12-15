@@ -30,7 +30,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
       ? [goerli]
       : [polygonMumbai]),
   ],
-  [publicProvider()]
+  [publicProvider()],
 );
 
 const { connectors } = getDefaultWallets({
@@ -51,8 +51,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>My page title</title>
-        <meta property="og:title" content="My page title" key="title" />
+        <meta
+          property="og:Philippe Gonet"
+          content="Philippe Gonet Mintpage"
+          key="Philippe Gonet"
+        />
       </Head>
+      <div className="page-container"></div>
       <WagmiConfig config={wagmiConfig}>
         <RainbowKitProvider chains={chains}>
           <ModalProvider>
@@ -62,6 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </ModalProvider>
         </RainbowKitProvider>
       </WagmiConfig>
+      <div />
     </>
   );
 }

@@ -148,7 +148,7 @@ function CheckoutMembership() {
                 styles.checkout_membership_video_and_selector_container
               }
             >
-              <Video size="small" />
+              <Video size="xtra-small" />
               <div
                 className={styles.checkout_membership_selector_bloc_container}
               >

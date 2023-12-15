@@ -1,7 +1,6 @@
 .container {
-  /* padding: 0 2rem; */
   position: relative;
-  /* background-color: red; */
+
   display: flex;
   justify-content: center;
   padding-bottom: 100px;
@@ -10,40 +9,33 @@
 .wrap {
   max-width: 1280px;
   width: 100%;
-  /* background-color: #a1d884; */
+  overflow: visible;
 }
-/* 10.3111653% + 9.6400244 */
+
 .home_circle_background_top {
   position: absolute;
   left: 8.60280659vw;
   top: -446px;
-  /* width: 51.1904762vw;
-  height: 51.1904762vh; */
   width: 774px;
   height: 774px;
   border-radius: 47.223917%;
   opacity: 0.16;
-  /* background-color: red; */
+
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  /* z-index: 212; */
 }
 .home_circle_background_middle_left {
   position: absolute;
   left: 0vw;
-  /* top: 19.9511897vh; */
+
   top: 327px;
-  /* width: 35.1433801vw; */
-  /* height: 35.1433801vh; */
+
   width: 576px;
   height: 576px;
   border-radius: 35.1433801%;
   opacity: 0.16;
-  /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  /* z-index: 212; */
-  /* overflow: hidden; */
 }
 .home_philippe_gonet_logo {
   position: absolute;
@@ -58,42 +50,63 @@
 .home_circle_background_middle_right {
   position: absolute;
   right: -400px;
-  /* left: 2000px; */
-  /* top: 19.9511897vh; */
   top: 521px;
-  /* width: 35.1433801vw; */
-  /* height: 35.1433801vh; */
   width: 774px;
   height: 774px;
   border-radius: 774px;
   opacity: 0.16;
-  /* background-color: red; */
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-  /* z-index: 213; */
-  overflow-x: hidden;
 }
 @media (max-width: 1450px) {
   .wrap {
-    /* background-color: red; */
     max-width: 1200px;
   }
 }
 @media (max-width: 1350px) {
   .wrap {
-    
     max-width: 1000px;
   }
 }
 @media (max-width: 1150px) {
   .wrap {
-    /* background-color: red; */
     max-width: 950px;
   }
 }
 @media (max-width: 1050px) {
   .wrap {
-    /* background-color: red; */
     max-width: 850px;
+  }
+}
+/* Tablet format */
+@media (max-width: 950px) {
+  .wrap {
+    max-width: 800px;
+  }
+}
+@media (max-width: 850px) {
+  .wrap {
+    max-width: 700px;
+  }
+}
+@media (max-width: 750px) {
+  .wrap {
+    max-width: 600px;
+  }
+}
+@media (max-width: 650px) {
+  .wrap {
+    max-width: 500px;
+  }
+  .home_philippe_gonet_logo {
+    left: 30vw;
+  }
+}
+@media (max-width: 550px) {
+  .wrap {
+    max-width: 400px;
+  }
+  .home_philippe_gonet_logo {
+    left: 20vw;
   }
 }

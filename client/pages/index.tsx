@@ -1,6 +1,10 @@
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
+<<<<<<< HEAD
+import React, { use, useState } from "react";
+=======
 import React, { useEffect, useState } from "react";
+>>>>>>> main
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
@@ -13,9 +17,9 @@ import { motion, useScroll } from "framer-motion";
 import { useModalContext } from "@/contexts/ModalContext";
 import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 const Home: NextPage = () => {
-  const { scrollYProgress } = useScroll();
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
+  const { scrollYProgress } = useScroll();
   function handleMintButtonClick() {
     setIsMintButtonClicked(true);
   }
