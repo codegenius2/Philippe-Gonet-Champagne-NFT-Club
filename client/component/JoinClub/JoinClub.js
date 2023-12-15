@@ -17,20 +17,9 @@ function JoinClub({ handleMintButtonClick }) {
         </div>
       </div>
       <div className={styles.join_club_video_and_description}>
-        <Video />
-        {/* <div className={styles.join_club_video_container}>
-          <video
-            autoPlay
-            // controls
-            muted
-            onEnded={handleVideoEnd}
-            // crossOrigin="anonymous"
-            src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/V06_CPG_nft_1080x1080.mp4?alt=media&token=c988d654-d8ba-4bdd-ba51-c108986b0fa6"
-            // src="/videos/V06_CPG_nft_1080x1080.mp4"
-          ></video>
-        </div> */}
+        <Video size="medium" />
         <div className={styles.join_club_title_and_description_container}>
-          <div className={styles.join_club_title_container}>Le CLUB</div>
+          <div className={styles.join_club_title_club_container}>Le CLUB</div>
           <div className={styles.join_club_description_container}>
             Le Club Membre Philippe Gonet propose une expérience exclusive
             offerte par la maison de champagne Philippe Gonet, réputée pour son

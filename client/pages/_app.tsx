@@ -11,10 +11,12 @@ import {
   polygon,
   base,
   zora,
+  polygonMumbai,
 } from "wagmi/chains";
 import { ModalProvider } from "../contexts/ModalContext";
 import { publicProvider } from "wagmi/providers/public";
 import Head from "next/head";
+import { CrossmintProvider } from "@/contexts/CrossmintPayloadContext";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -24,14 +26,16 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
+      ? [goerli]
+      : [polygonMumbai]),
   ],
-  [publicProvider()],
+  [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
-  projectId: "YOUR_PROJECT_ID",
+  appName: "Club_CPG_2024",
+  projectId: "81a4cae2ffaa2831668db79217d52ba4",
   chains,
 });
 
@@ -52,7 +56,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <WagmiConfig config={wagmiConfig}>
         <RainbowKitProvider chains={chains}>
           <ModalProvider>
-            <Component {...pageProps} />
+            <CrossmintProvider>
+              <Component {...pageProps} />
+            </CrossmintProvider>
           </ModalProvider>
         </RainbowKitProvider>
       </WagmiConfig>

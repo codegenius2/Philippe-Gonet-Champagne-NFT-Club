@@ -1,6 +1,10 @@
 .checkout_membership_container {
 }
 /* If wallet connected */
+.checkout_membership_payout_title_container {
+  display: flex;
+  justify-content: space-between;
+}
 .checkout_membership_payout_title {
   font-size: 32px;
   font-weight: 700;
