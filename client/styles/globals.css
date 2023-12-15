@@ -23,6 +23,7 @@ body {
   justify-content: center; */
   font-family: "red-hat-display";
   scroll-behavior: smooth !important;
+  background-color:red ;
 }
 body::-webkit-scrollbar {
   display: none;
