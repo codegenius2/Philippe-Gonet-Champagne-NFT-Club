@@ -1,35 +1,35 @@
 import React, { useEffect, useState } from "react";
-// import "./CrossmintPayload.css";
-// import { useLocation } from "react-router-dom";
 import { useSearchParams } from "next/navigation";
 import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 
 const CrossmintPayload = () => {
-  //   const location = useLocation();
   const searchParams = useSearchParams();
-  const { crossmintPayloadLocationdata, setCrossmintPayloadLocationdata } =
-    useCrossmintPayloadContext();
-
+  const { setCrossmintPayloadLocationdata } = useCrossmintPayloadContext();
+  const [isMount, setIsMount] = useState(false);
   useEffect(() => {
-    // const params = new URLSearchParams(location.search);
-    // const pParam = params.get("p");
-
-    const pParam = searchParams.get("p");
-    console.log(pParam);
-
-    if (pParam) {
-      const decodedData = JSON.parse(decodeURIComponent(pParam));
-      console.log("decodedData -> ", decodedData);
-      setCrossmintPayloadLocationdata(decodedData);
-      localStorage.setItem("crossmintPayload", JSON.stringify(decodedData[0]));
-      setTimeout(() => {
-        window.close();
-      }, 200);
-    }
-
-    //   }, [location.search]);
+    setTimeout(() => {
+      setIsMount(true);
+    }, 2000);
   }, []);
-
+  useEffect(() => {
+    if (isMount) {
+      setTimeout(() => {
+        const pParam = searchParams.get("p");
+        if (pParam) {
+          const decodedData = JSON.parse(decodeURIComponent(pParam));
+          console.log("decodedData -> ", decodedData);
+          setCrossmintPayloadLocationdata(decodedData);
+          localStorage.setItem(
+            "crossmintPayload",
+            JSON.stringify(decodedData[0])
+          );
+          setTimeout(() => {
+            window.close();
+          }, 200);
+        }
+      }, 2000);
+    }
+  }, [isMount]);
   return (
     <div
       style={{
