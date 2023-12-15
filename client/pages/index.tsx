@@ -11,7 +11,7 @@ import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMe
 import NftMinted from "../component/Modal/NftMinted/NftMinted.js";
 import { motion, useScroll } from "framer-motion";
 import { useModalContext } from "@/contexts/ModalContext";
-import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
+// import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 const Home: NextPage = () => {
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
