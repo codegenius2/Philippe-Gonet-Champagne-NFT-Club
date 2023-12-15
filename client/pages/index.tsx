@@ -1,6 +1,6 @@
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
@@ -12,13 +12,14 @@ import NftMinted from "../component/Modal/NftMinted/NftMinted.js";
 import { motion, useScroll } from "framer-motion";
 import { useModalContext } from "../contexts/ModalContext";
 const Home: NextPage = () => {
-  const { scrollYProgress } = useScroll();
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
+  const { scrollYProgress } = useScroll();
   function handleMintButtonClick() {
     setIsMintButtonClicked(true);
   }
-  const { mintWithWalletSuccessFull } = useModalContext();
+  const { mintWithWalletSuccessFull, windowWidth, setWindowWidth } =
+    useModalContext();
   return (
     <>
       <div className={styles.home_circle_background_top}></div>

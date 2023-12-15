@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/join-club.module.css";
 import Video from "../Video/Video";
+import { useModalContext } from "@/contexts/ModalContext";
 function JoinClub({ handleMintButtonClick }) {
-  const [windowWidth, setWindowWidth] = useState();
+  const { windowWidth, setWindowWidth } = useModalContext();
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   return (
     <div className={styles.join_club_container}>
       <div className={styles.join_club_title_and_mint_button_container}>

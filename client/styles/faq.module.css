@@ -64,6 +64,7 @@
   overflow: hidden;
   max-height: 0;
 }
+/* Tablet format */
 @media (max-width: 950px) {
   .faq_title {
     font-size: 30px;

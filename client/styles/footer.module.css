@@ -67,6 +67,7 @@
   opacity: 0.5 !important;
   transition-duration: 300ms;
 }
+/* Tablet format */
 @media (max-width: 950px) {
   .footer_menu_container {
     width: 450px;
