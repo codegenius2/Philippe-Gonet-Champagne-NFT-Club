@@ -340,7 +340,7 @@ function CheckoutMembership() {
                             </div>
                           </Button>
                         </div>
-                        <Button size="small">
+                        {/* <Button size="small"> */}
                           <CrossmintPayButton
                             collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
                             projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
@@ -351,6 +351,11 @@ function CheckoutMembership() {
                             environment="staging"
                             mintTo={`${address}`}
                             successCallbackURL="http://localhost:3000/crossmintpayload"
+                            getButtonText={(connecting) =>
+                              connecting
+                                ? "Chargement..."
+                                : `Payer par carte bancaire`
+                            }
                           />
                           {/* <div>Payer par carte bancaire</div>
                         <div>
@@ -359,7 +364,7 @@ function CheckoutMembership() {
                             alt=""
                           />
                         </div> */}
-                        </Button>
+                        {/* </Button> */}
                       </div>
                     </>
                   ) : (
@@ -375,6 +380,11 @@ function CheckoutMembership() {
                             }}
                             environment="staging"
                             successCallbackURL="http://localhost:3000/crossmintpayload"
+                            getButtonText={(connecting) =>
+                              connecting
+                                ? "Connecting"
+                                : `Payer par corte bancaire`
+                            }
                           />
                         </Button>
                       ) : (

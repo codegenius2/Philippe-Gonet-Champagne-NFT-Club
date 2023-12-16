@@ -6,6 +6,7 @@ function Button({ handleClick, children, size, connectWalletButton }) {
       {connectWalletButton ? (
         <>
           <div
+            onClick={() => handleClick}
             className={
               size === "xtra-small"
                 ? styles.button_container_xtra_small_connect_wallet
