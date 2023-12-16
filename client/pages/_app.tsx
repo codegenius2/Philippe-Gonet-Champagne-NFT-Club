@@ -1,6 +1,10 @@
 import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
 import type { AppProps } from "next/app";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
@@ -59,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <div className="page-container"></div>
       <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={chains}>
+        <RainbowKitProvider theme={darkTheme()} chains={chains}>
           <ModalProvider>
             <CrossmintProvider>
               <Component {...pageProps} />
