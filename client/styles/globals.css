@@ -92,6 +92,18 @@ html {
   justify-content: center;
   background-color: blue;
 } */
+.xmint-btn::part(button) {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  ) !important;
+}
+.xmint-btn::part(contentParagraph) {
+  color: white;
+  font-size: 1.25rem;
+}
 @font-face {
   font-family: "red-hat-display";
   /* src: url("./Assets/Fonts/Satoshi_Complete/Satoshi-Regular.otf") */

@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 10px;
   background: var(--Green-100, #a1d884);
   color: black;
   font-size: 14.883px;
@@ -16,6 +16,7 @@
 .button_container_small {
   max-width: 200px;
   width: 100%;
+  /* max-height: 45px; */
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -69,6 +70,66 @@
 .button_container_small:active,
 .button_container_medium:active,
 .button_container_large:active {
-  transform: scale(0.8);
+  transform: scale(0.9);
   transition-duration: 300ms;
+}
+/* === Conditionnal rendering: If its connect wallet button === */
+.button_container_xtra_small_connect_wallet {
+  max-width: 167px;
+  width: 100%;
+  height: 34px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--Green-100, #a1d884);
+  color: black;
+  font-size: 14.883px;
+  font-weight: 600;
+  user-select: none;
+}
+.button_container_xtra_small_connect_wallet div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.button_container_xtra_small_connect_wallet:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition-duration: 300ms;
+}
+.button_container_xtra_small_connect_wallet:active {
+  transform: scale(0.9);
+  transition-duration: 300ms;
+}
+.button_container_small_connect_wallet {
+  max-width: 200px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: var(--Green-100, #a1d884);
+  /* max-height: 45px; */
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  user-select: none;
+}
+.button_container_small_connect_wallet:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition-duration: 300ms;
+}
+.button_container_small_connect_wallet:active {
+  transform: scale(0.9);
+  transition-duration: 300ms;
+}
+
+.button_container_small_connect_wallet div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 10px;
 }

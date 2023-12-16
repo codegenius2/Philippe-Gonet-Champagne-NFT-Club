@@ -1,10 +1,6 @@
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-<<<<<<< HEAD
-import React, { use, useState } from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> main
 import styles from "../styles/index.module.css";
 import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
@@ -15,7 +11,7 @@ import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMe
 import NftMinted from "../component/Modal/NftMinted/NftMinted.js";
 import { motion, useScroll } from "framer-motion";
 import { useModalContext } from "@/contexts/ModalContext";
-import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
+// import { useCrossmintPayloadContext } from "@/contexts/CrossmintPayloadContext";
 const Home: NextPage = () => {
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
@@ -25,7 +21,7 @@ const Home: NextPage = () => {
   }
   const { mintWithWalletSuccessFull, setMintWithWalletSuccessull } =
     useModalContext();
-  const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
+  // const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
   const [crossmintPayLoadLocalStorage, setCrossmintPayLoadLocalStorage] =
     useState(null);
 
@@ -79,7 +75,7 @@ const Home: NextPage = () => {
         </div>
         {isMintButtonClicked && (
           <Modal setState={setIsMintButtonClicked}>
-            {!mintWithWalletSuccessFull ? (
+            {mintWithWalletSuccessFull ? (
               <NftMinted />
             ) : (
               <CheckoutMembership />
