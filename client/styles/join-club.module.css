@@ -216,3 +216,27 @@
     box-shadow: 2px 2px 10px 5px #a1d884;
   }
 }
+/* Mobile format */
+@media (max-width: 450px) {
+  .join_club_container{
+    margin-top: 100px;
+  }
+  .join_club_title_container {
+    font-size: 14px !important;
+  }
+  .join_club_mint_button_wrap {
+    font-size: 12px;
+    height: 30px;
+    width: 100px;
+    box-shadow: 2px 2px 10px 5px #a1d884;
+  }
+  .join_club_title_club_container{
+    font-size: 14px;
+  }
+  .join_club_description_container {
+    font-size: 8.5px;
+  }
+  .join_club_know_more_container{
+    margin-top: 17px;
+  }
+}

@@ -113,3 +113,18 @@
     width: 11px;
   }
 }
+/* Mobile format */
+@media (max-width: 450px) {
+  .footer_container{
+    height: 45px;
+  }
+  .footer_philippe_gonnet_logo_container img {
+    width: 15px;
+    height: 15px;
+  }
+  .footer_menu_container{
+    font-size: 7px;
+    width: 220px;
+  }
+  
+}
