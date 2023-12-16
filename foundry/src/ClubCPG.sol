@@ -71,19 +71,17 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
     uint8 private constant MAX_PARTNERSHIP_MINT = 5; // Should be replaced
 
     // Wallet to receive NFTs mint for partnership
-    address private constant PARTNERSHIP_ADDRESS =
-        0x9BB91139461f877fA36367c10bBaB0Aace02FA33; // Should be replaced
+    address private constant PARTNERSHIP_ADDRESS = 0x7D535f5b19594c8366f0e39CEf0142133408BA63; // Should be replaced
 
     // Wallet to receive USDC from mint function
-    address private constant RECEIPT_ADDRESS =
-        0x6eAAb9AEA2564ED104bCa59A134eeFA71B14DC19; // Should be replaced
+    address private constant RECEIPT_ADDRESS = 0x7D535f5b19594c8366f0e39CEf0142133408BA63; // Should be replaced
 
     // ================================================================
     // │                          MAPPING                             │
     // ================================================================
 
     // Store the number of Nft received from the mint function an given address
-    mapping(address => uint8) private s_addressToNumberOfTokenReceivedFromMint;
+    mapping(address => uint8) public s_addressToNumberOfTokenReceivedFromMint;
 
     // ================================================================
     // │                           EVENT                              │
@@ -97,11 +95,7 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
 
     // Triggered when a mint from function succeed
     event ClubCPG__Mint(
-        address indexed from,
-        address indexed to,
-        uint256 indexed totalPrice,
-        uint8 quantity,
-        uint256 currentIndex
+        address indexed from, address indexed to, uint256 indexed totalPrice, uint8 quantity, uint256 currentIndex
     );
 
     // Triggered when a new URI is set
@@ -222,10 +216,12 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      * @custom:revert Please refer to the corresponding custom error documentation
      */
     function setMaxSupply(uint256 _newMaxSupply) external onlyOwner {
-        if (_newMaxSupply < _totalMinted())
+        if (_newMaxSupply < _totalMinted()) {
             revert ClubCPG__CannotSetMaxSupplyBelowCurrentNumberOfNftMinted();
-        if (_newMaxSupply == s_maxSupply)
+        }
+        if (_newMaxSupply == s_maxSupply) {
             revert ClubCPG__CannotSetMaxSupplyToSameAmount();
+        }
         s_maxSupply = _newMaxSupply;
 
         emit ClubCPG__SetNewMaxSupply(_newMaxSupply);
@@ -246,44 +242,35 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      */
     function mint(address _to, uint8 _quantity) external nonReentrant {
         if (_to == address(0)) revert ClubCPG__ShouldBeAValidAddress();
-        if (_to == address(0x000000000000000000000000000000000000dEaD))
+        if (_to == address(0x000000000000000000000000000000000000dEaD)) {
             revert ClubCPG__ShouldBeAValidAddress();
+        }
         if (_quantity == 0) revert ClubCPG__ShouldBeAValidQuantity();
-        if (_quantity + _totalMinted() > s_maxSupply)
+        if (_quantity + _totalMinted() > s_maxSupply) {
             revert ClubCPG__MaxSupplyReachedOrTooMuchNftsAsked();
-        if (
-            _quantity + s_addressToNumberOfTokenReceivedFromMint[_to] >
-            s_maxWallet
-        ) revert ClubCPG__MaxNftMintedReachedForReceiptAddress();
-        // if (_quantity + balanceOf(_to) > s_maxWallet)
-        //     revert ClubCPG__MaxNftReachedForReceiptAddress();
+        }
+        if (_quantity + s_addressToNumberOfTokenReceivedFromMint[_to] > s_maxWallet) {
+            revert ClubCPG__MaxNftMintedReachedForReceiptAddress();
+        }
         (bool status, uint256 totalPrice) = Math.tryMul(s_price, _quantity);
         if (status == false) revert ClubCPG__CannotComputeTotalPrice();
-        if (i_usdcAddress.allowance(msg.sender, address(this)) < totalPrice)
+        if (i_usdcAddress.allowance(msg.sender, address(this)) < totalPrice) {
             revert ClubCPG__NotEnoughUSDCAllowed();
-        if (i_usdcAddress.balanceOf(msg.sender) < totalPrice)
+        }
+        if (i_usdcAddress.balanceOf(msg.sender) < totalPrice) {
             revert ClubCPG__NotEnoughUSDCInBalance();
+        }
 
         s_addressToNumberOfTokenReceivedFromMint[_to] += _quantity;
 
-        bool success = i_usdcAddress.transferFrom(
-            msg.sender,
-            address(this),
-            totalPrice
-        );
+        bool success = i_usdcAddress.transferFrom(msg.sender, address(this), totalPrice);
         if (!success) revert ClubCPG__CannotTransferUsdcToContract();
 
         bool success2 = i_usdcAddress.transfer(RECEIPT_ADDRESS, totalPrice);
         if (!success2) revert ClubCPG__CannotTransferUsdcToReceiptAddress();
         _mint(_to, _quantity);
 
-        emit ClubCPG__Mint(
-            msg.sender,
-            _to,
-            totalPrice,
-            _quantity,
-            _totalMinted()
-        );
+        emit ClubCPG__Mint(msg.sender, _to, totalPrice, _quantity, _totalMinted());
     }
 
     /**
@@ -293,22 +280,18 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      * @custom:revert Please refer to the corresponding custom error documentation
      */
     function mintPartnership(uint8 _quantity) external onlyOwner {
-        if (_quantity + _totalMinted() > s_maxSupply)
+        if (_quantity + _totalMinted() > s_maxSupply) {
             revert ClubCPG__MaxSupplyReachedOrTooMuchNftsAsked();
-        if (s_mintPartnershipCount + _quantity > MAX_PARTNERSHIP_MINT)
+        }
+        if (s_mintPartnershipCount + _quantity > MAX_PARTNERSHIP_MINT) {
             revert ClubCPG__MaxPartnershipMintReachedOrTooMuchNftsAsked();
+        }
         unchecked {
             s_mintPartnershipCount += _quantity;
         }
         _mint(PARTNERSHIP_ADDRESS, _quantity);
 
-        emit ClubCPG__Mint(
-            msg.sender,
-            PARTNERSHIP_ADDRESS,
-            0,
-            _quantity,
-            _totalMinted()
-        );
+        emit ClubCPG__Mint(msg.sender, PARTNERSHIP_ADDRESS, 0, _quantity, _totalMinted());
     }
 
     // ================================================================
@@ -320,14 +303,15 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      * @custom:revert Please refer to the corresponding custom error documentation
      * @inheritdoc ERC721A
      */
-    function _beforeTokenTransfers(
-        address from,
-        address to,
-        uint256 startTokenId,
-        uint256 quantity
-    ) internal override {
-        if (quantity + balanceOf(to) > s_maxWallet)
+    function _beforeTokenTransfers(address from, address to, uint256 startTokenId, uint256 quantity)
+        internal
+        override
+    {
+        if(to != PARTNERSHIP_ADDRESS){
+            if (quantity + balanceOf(to) > s_maxWallet) {
             revert ClubCPG__MaxNftReachedForReceiptAddress();
+        }
+        }
     }
 
     // ================================================================
@@ -341,10 +325,9 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      * @custom:revert Please refer to the corresponding custom error documentation
      */
     function setUri(string memory _newUri) external onlyOwner {
-        if (
-            keccak256(abi.encodePacked(_newUri)) ==
-            keccak256(abi.encodePacked(s_uri))
-        ) revert ClubCPG__CannotSetUriToSameUri();
+        if (keccak256(abi.encodePacked(_newUri)) == keccak256(abi.encodePacked(s_uri))) {
+            revert ClubCPG__CannotSetUriToSameUri();
+        }
         s_uri = _newUri;
 
         emit ClubCPG__SetNewUri(_newUri);
@@ -357,9 +340,7 @@ contract ClubCPG is ERC721AQueryable, Ownable, ReentrancyGuard {
      * @return s_uri
      * @custom:revert Please refer to the corresponding custom error documentation
      */
-    function tokenURI(
-        uint256 tokenId
-    ) public view virtual override(ERC721A, IERC721A) returns (string memory) {
+    function tokenURI(uint256 tokenId) public view virtual override(ERC721A, IERC721A) returns (string memory) {
         if (!_exists(tokenId)) revert URIQueryForNonexistentToken();
 
         return string(abi.encodePacked(s_uri));
