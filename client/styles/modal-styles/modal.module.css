@@ -50,10 +50,12 @@
   width: 100%;
   max-height: 439px;
   height: 100%;
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
   background: #000000;
   z-index: 21320;
-  animation: bounceIn 600ms both;
+  animation: slideUp 600ms both;
   padding: 40px;
   box-shadow: 2px 2px 30px 5px #a1d884;
   bottom: 0% !important;
@@ -62,13 +64,18 @@
   0% {
     transform: translateX(-30vw);
   }
-  /* 70% {
-      transform: translateX(25%);
-    } */
   75% {
     transform: translateX(5vw);
   }
   100% {
     transform: translateX(0vw);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

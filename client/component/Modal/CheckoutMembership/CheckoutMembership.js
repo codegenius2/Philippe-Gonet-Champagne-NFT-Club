@@ -118,7 +118,7 @@ function CheckoutMembership() {
             >
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                alt=""
+                alt="Metmask logo"
               />
             </div>
           </div>

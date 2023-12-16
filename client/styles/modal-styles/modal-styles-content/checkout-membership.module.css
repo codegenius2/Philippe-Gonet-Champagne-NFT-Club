@@ -202,9 +202,11 @@
   left: 30%;
   width: 160px;
   height: 160px;
-  /* background-color: green; */
 }
-/*  */
+/* Conditionnal rendering: Modal for Tablet */
+.checkout_membership_container{
+  display: flex;
+}
 @keyframes slideInFromTop {
   0% {
     transform: translateY(-50%);
