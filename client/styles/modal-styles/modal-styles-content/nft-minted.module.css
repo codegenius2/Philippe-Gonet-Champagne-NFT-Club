@@ -26,9 +26,18 @@
 }
 .nft_minted_get_acess_discord_description {
   font-weight: 700;
-  font-size: 14px;
-  margin-top: 66px;
+  font-size: 15px;
+
   text-align: center;
+}
+.nft_minted_get_access_discord_form_container {
+  /* background-color: red; */
+  padding-top: 10px;
+  padding-left: 20px;
+  margin-top: 46px;
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
 }
 .nft_minted_get_access_discord_form {
   position: relative;
@@ -101,20 +110,45 @@
 .nft_minted_get_access_discord_send_mail_button img {
   transform: scale(1.2);
 }
+.nft_minted_reason_question {
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 30px;
+  text-align: center;
+}
 .nft_minted_mail_reason_container {
-  background-color: rgb(26, 17, 17);
-  width: 410px;
-  height: 100px;
+  margin-top: 30px;
+  /* background-color: rgb(26, 17, 17); */
+  height: 50px;
+  /* background-color: red; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.nft_minted_mail_reason_container > div {
+.nft_minted_mail_choice_container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 140px;
+  /* background-color: red; */
 }
 .nft_minted_checkbox_container {
   width: 33.75px;
   height: 33.75px;
   border: 1px solid #a1d884;
+  cursor: pointer;
+}
+.nft_minted_get_access_send_form_button_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+.nft_minted_get_access_send_form_button_container > div {
+  text-align: center;
+  width: 50% !important;
+  display: flex;
+  justify-content: center;
 }
 .nft_minted_socials_description {
   text-align: center;
@@ -155,5 +189,15 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@media (max-width: 950px) {
+  .nft_minted_mail_reason_container {
+    margin-top: 30px;
+    /* background-color: rgb(26, 17, 17); */
+    height: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
   }
 }
