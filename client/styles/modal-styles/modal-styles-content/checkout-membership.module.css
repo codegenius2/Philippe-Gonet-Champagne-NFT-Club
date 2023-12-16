@@ -1,6 +1,13 @@
 .checkout_membership_container {
 }
-/* If wallet connected */
+/* === If wallet connected === */
+.checkoutmembership_payout_title_and_show_address_tablet {
+}
+.checkout_membership_payout_show_address_container {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
 .checkout_membership_payout_title_container {
   display: flex;
   justify-content: space-between;
@@ -11,7 +18,10 @@
   text-align: center;
   margin-bottom: 30px;
 }
-/*  */
+.checkout_membership_payout_buttons_and_description_container {
+  width: 100%;
+}
+/* END CONNECTED */
 .checkout_membership_video_and_selector_container {
   display: flex;
 }
@@ -144,7 +154,6 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  /* height: 105px; */
 }
 .checkout_membership_payout_buttons_container > div {
   max-width: 100% !important;
@@ -164,8 +173,6 @@
   justify-content: space-between;
   padding: 10px 20px;
 }
-/* .checkout_membership_payout_buttons_container > button > img {
-} */
 .checkout_membership_payout_buttons_container > button > span {
   color: black;
 }
@@ -194,14 +201,13 @@
   margin: 0px 5px;
 }
 
-/* If mint with wallet is clicked */
+/* === If mint with wallet is clicked === */
 
 .checkout_membership_payout_loading_mint_wallet_container {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: fit-content; */
 }
 .checkout_membership_payout_loading_mint_wallet {
   position: relative;
@@ -309,6 +315,75 @@
   letter-spacing: 6px;
   animation: slideInFromTop 0.3s ease-out;
 }
+/* === Tablet + If wallet connected === */
+.checkout_membership_payout_title_tablet {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.checkout_membership_selector_counter_container_tablet {
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+  height: 36px;
+}
+.checkout_membership_payout_buttons_and_description_container_tablet {
+  width: 100%;
+  min-height: 395px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* .checkout_membership_payout_explanation_title_and_description_tablet{
+
+} */
+.checkout_membership_payout_explanation_title_tablet {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.checkout_membership_payout_buttons_container_tablet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.checkout_membership_payout_buttons_container_tablet > div {
+  max-width: 100% !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 0px;
+  margin-bottom: 15px;
+}
+.checkout_membership_payout_buttons_container_tablet > button {
+  font-family: "red-hat-display";
+  font-weight: 800 !important;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #a1d884;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.checkout_membership_payout_buttons_container_tablet > button > span {
+  color: black;
+}
+.checkout_membership_payout_buttons_container_tablet > div > div {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 100%;
+  padding: 10px 20px;
+}
+.checkout_membership_payout_buttons_container_tablet img {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+}
 @keyframes slideInFromTop {
   0% {
     transform: translateY(-50%);
@@ -341,6 +416,32 @@
     flex-direction: column;
     height: 80px;
   }
+  .checkout_membership_payout_buttons_container_tablet > button {
+    font-size: 14.883px;
+    border-radius: 10px;
+  }
+  .checkout_membership_payout_buttons_container_tablet img {
+    width: 15px;
+    height: 15px;
+  }
+}
+@media (max-width: 650px) {
+  .checkout_membership_payout_buttons_and_description_container_tablet {
+    padding-top: 50px;
+  }
+  .checkout_membership_price_container_tablet {
+    width: 210px;
+    font-size: 30px;
+  }
+  .checkout_membership_payout_wallet_logo_container img {
+    margin: 0px 2px;
+  }
+  .checkout_membership_payout_buttons_container_tablet > button {
+    font-size: 12.883px;
+  }
+  .checkout_membership_payout_buttons_container_tablet > div > div > div {
+    font-size: 12.83px;
+  }
 }
 @media (max-width: 550px) {
   .checkout_membership_explanation_and_buttons_container_tablet {
@@ -350,7 +451,19 @@
     font-size: 10px;
   }
   .checkout_membership_price_container_tablet {
-    width: 180px;
-    font-size: 30px;
+    width: 160px;
+    font-size: 24px;
+  }
+  .checkout_membership_payout_buttons_container_tablet{
+    width: 150px;
+  }
+  .checkout_membership_payout_buttons_container_tablet > div > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .checkout_membership_payout_buttons_container_tablet > button {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

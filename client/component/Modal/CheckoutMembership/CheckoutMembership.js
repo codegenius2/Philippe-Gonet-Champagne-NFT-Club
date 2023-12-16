@@ -132,125 +132,153 @@ function CheckoutMembership() {
                 : styles.checkout_membership_container
             }
           >
-            {isConnected && (
-              <>
-                <div
-                  className={styles.checkout_membership_payout_title_container}
-                >
-                  <span className={styles.checkout_membership_payout_title}>
-                    Paiement
-                  </span>
-                  <ConnectButton
-                    coolMode
-                    label="Connect wallet"
-                    chainStatus="none"
-                    showBalance={false}
-                  />
-                </div>
-              </>
-            )}
-
             <div
               className={
                 windowWidth < 950
-                  ? styles.checkout_membership_video_and_selector_and_price_container_tablet
+                  ? styles.checkoutmembership_payout_title_and_show_address_tablet
                   : ""
               }
             >
+              {isConnected && (
+                <>
+                  <div
+                    className={
+                      styles.checkout_membership_payout_title_container
+                    }
+                  >
+                    <span
+                      className={
+                        windowWidth < 950
+                          ? styles.checkout_membership_payout_title_tablet
+                          : styles.checkout_membership_payout_title
+                      }
+                    >
+                      Paiement
+                    </span>
+                    <div
+                      className={
+                        windowWidth < 950
+                          ? styles.checkout_membership_payout_show_address_container
+                          : ""
+                      }
+                    >
+                      <ConnectButton
+                        coolMode
+                        label="Connect wallet"
+                        chainStatus="none"
+                        showBalance={false}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
               <div
                 className={
                   windowWidth < 950
-                    ? styles.checkout_membership_video_and_selector_container_tablet
-                    : styles.checkout_membership_video_and_selector_container
+                    ? styles.checkout_membership_video_and_selector_and_price_container_tablet
+                    : ""
                 }
               >
-                <Video size="xtra-small" />
                 <div
                   className={
                     windowWidth < 950
-                      ? styles.checkout_membership_selector_bloc_container_tablet
-                      : styles.checkout_membership_selector_bloc_container
+                      ? styles.checkout_membership_video_and_selector_container_tablet
+                      : styles.checkout_membership_video_and_selector_container
                   }
                 >
-                  <div className={styles.checkout_membership_selector_title}>
-                    Quantité*
-                  </div>
-                  <div
-                    className={
-                      styles.checkout_membership_selector_counter_container
-                    }
-                  >
-                    <div
-                      className={
-                        styles.checkout_membership_selector_counter_minus
-                      }
-                      onClick={handleCountMinusClick}
-                    >
-                      <span
-                        style={
-                          isMinusToggled ? { transform: "rotate(360deg)" } : {}
-                        }
-                      ></span>
-                    </div>
-                    <div
-                      className={
-                        styles.checkout_membership_selector_counter_quantity
-                      }
-                      key={quantityCount}
-                    >
-                      {quantityCount}
-                    </div>
-                    <div
-                      className={
-                        styles.checkout_membership_selector_counter_plus
-                      }
-                      onClick={handleCountPlusMinusClick}
-                    >
-                      <span
-                        style={
-                          isPlusToggled ? { transform: "rotate(360deg)" } : {}
-                        }
-                      ></span>
-                      <span
-                        style={
-                          isPlusToggled
-                            ? { transform: "translateX(-50%) rotate(270deg)" }
-                            : {}
-                        }
-                      ></span>
-                    </div>
-                  </div>
+                  <Video size="xtra-small" />
                   <div
                     className={
                       windowWidth < 950
-                        ? styles.checkout_membership_selector_text_limitation_tablet
-                        : styles.checkout_membership_selector_text_limitation
+                        ? styles.checkout_membership_selector_bloc_container_tablet
+                        : styles.checkout_membership_selector_bloc_container
                     }
                   >
-                    *Limité à 2 par personnes maximum
+                    <div className={styles.checkout_membership_selector_title}>
+                      Quantité*
+                    </div>
+                    <div
+                      className={
+                        isConnected
+                          ? styles.checkout_membership_selector_counter_container_tablet
+                          : styles.checkout_membership_selector_counter_container
+                      }
+                    >
+                      <div
+                        className={
+                          styles.checkout_membership_selector_counter_minus
+                        }
+                        onClick={handleCountMinusClick}
+                      >
+                        <span
+                          style={
+                            isMinusToggled
+                              ? { transform: "rotate(360deg)" }
+                              : {}
+                          }
+                        ></span>
+                      </div>
+                      <div
+                        className={
+                          styles.checkout_membership_selector_counter_quantity
+                        }
+                        key={quantityCount}
+                      >
+                        {quantityCount}
+                      </div>
+                      <div
+                        className={
+                          styles.checkout_membership_selector_counter_plus
+                        }
+                        onClick={handleCountPlusMinusClick}
+                      >
+                        <span
+                          style={
+                            isPlusToggled ? { transform: "rotate(360deg)" } : {}
+                          }
+                        ></span>
+                        <span
+                          style={
+                            isPlusToggled
+                              ? { transform: "translateX(-50%) rotate(270deg)" }
+                              : {}
+                          }
+                        ></span>
+                      </div>
+                    </div>
+                    <div
+                      className={
+                        windowWidth < 950
+                          ? styles.checkout_membership_selector_text_limitation_tablet
+                          : styles.checkout_membership_selector_text_limitation
+                      }
+                    >
+                      *Limité à 2 par personnes maximum
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                style={isConnected ? { marginBottom: "40px" } : {}}
-                className={
-                  windowWidth < 950
-                    ? styles.checkout_membership_price_container_tablet
-                    : styles.checkout_membership_price_container
-                }
-              >
                 <div
+                  style={isConnected ? { marginBottom: "40px" } : {}}
                   className={
                     windowWidth < 950
-                      ? styles.checkout_membership_price_tablet
-                      : styles.checkout_membership_price
+                      ? styles.checkout_membership_price_container_tablet
+                      : styles.checkout_membership_price_container
                   }
-                  key={totalPrice}
                 >
-                  {totalPrice}
-                </div>
-                <div className={styles.checkout_membership_price_currency}>
-                  USDC
+                  <div
+                    className={
+                      windowWidth < 950
+                        ? styles.checkout_membership_price_tablet
+                        : styles.checkout_membership_price
+                    }
+                    key={totalPrice}
+                  >
+                    {totalPrice}
+                  </div>
+                  <div className={styles.checkout_membership_price_currency}>
+                    USDC
+                  </div>
                 </div>
               </div>
             </div>
@@ -317,30 +345,72 @@ function CheckoutMembership() {
                     <>
                       <div
                         className={
-                          styles.checkout_membership_payout_buttons_container
+                          windowWidth < 950
+                            ? styles.checkout_membership_payout_buttons_and_description_container_tablet
+                            : styles.checkout_membership_payout_buttons_and_description_container
                         }
                       >
-                        <div onClick={approveUSDCMethod}>
-                          <Button size="small">
-                            <div>Payer avec mon wallet</div>
+                        {windowWidth < 950 && (
+                          <>
                             <div
                               className={
-                                styles.checkout_membership_payout_wallet_logo_container
+                                styles.checkout_membership_payout_explanation_title_and_description_tablet
                               }
                             >
-                              <img
-                                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                                alt=""
-                              />
-
-                              <img
-                                src="https://www.rainbowkit.com/rainbow.svg"
-                                alt=""
-                              />
+                              <div
+                                className={
+                                  styles.checkout_membership_payout_explanation_title_tablet
+                                }
+                              >
+                                Le CLUB
+                              </div>
+                              <div
+                                className={
+                                  styles.checkout_membership_explanation_description_tablet
+                                }
+                              >
+                                Le Club Membre Philippe Gonet propose une
+                                expérience exclusive offerte par la maison de
+                                champagne Philippe Gonet, réputée pour son
+                                engagement en faveur de l'excellence et de
+                                l'authenticité. Les membres bénéficient d'une
+                                collaboration privilégiée avec quatre chefs de
+                                renom, leur ouvrant la porte à des expériences
+                                gastronomiques exceptionnelles.
+                              </div>
                             </div>
-                          </Button>
-                        </div>
-                        {/* <Button size="small"> */}
+                          </>
+                        )}
+                        <div
+                          className={
+                            windowWidth < 950
+                              ? styles.checkout_membership_payout_buttons_container_tablet
+                              : styles.checkout_membership_payout_buttons_container
+                          }
+                        >
+                          <div onClick={approveUSDCMethod}>
+                            <Button
+                              size={windowWidth < 700 ? "xtra-small" : "small"}
+                            >
+                              <div>Payer avec mon wallet</div>
+                              <div
+                                className={
+                                  styles.checkout_membership_payout_wallet_logo_container
+                                }
+                              >
+                                <img
+                                  src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                                  alt=""
+                                />
+
+                                <img
+                                  src="https://www.rainbowkit.com/rainbow.svg"
+                                  alt=""
+                                />
+                              </div>
+                            </Button>
+                          </div>
+                          {/* <Button size="small"> */}
                           <CrossmintPayButton
                             collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
                             projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
@@ -364,7 +434,8 @@ function CheckoutMembership() {
                             alt=""
                           />
                         </div> */}
-                        {/* </Button> */}
+                          {/* </Button> */}
+                        </div>
                       </div>
                     </>
                   ) : (
