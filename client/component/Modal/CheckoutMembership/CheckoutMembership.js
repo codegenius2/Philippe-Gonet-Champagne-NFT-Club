@@ -49,19 +49,30 @@ function CheckoutMembership() {
     mintError,
   } = useMint(address, quantityCount);
 
-  useEffect(() => {
-    //TODO: condition should be the receipt status
-    if (approveUSDCReceipt) {
-      setIsTimeoutApproveActive(true);
-      setTimeout(() => {
+  async function mintMethodTimeout(timer) {
+    setTimeout(async () => {
+      try {
+        console.log("in try");
         mintMethod({ from: address });
         setIsTimeoutApproveActive(false);
-      }, 10000);
+      } catch (error) {
+        console.log("in error");
+        console.error(error);
+        if (!isMintTxSent) {
+          console.log("in callback");
+          mintMethodTimeout(5000);
+        }
+      }
+    }, timer);
+  }
+  useEffect(() => {
+    if (approveUSDCReceipt) {
+      setIsTimeoutApproveActive(true);
+      mintMethodTimeout(10000);
     }
   }, [approveUSDCReceipt]);
 
   useEffect(() => {
-    //TODO: condition should be the receipt status
     if (mintReceipt) {
       setMintWithWalletSuccessull(true);
     }
