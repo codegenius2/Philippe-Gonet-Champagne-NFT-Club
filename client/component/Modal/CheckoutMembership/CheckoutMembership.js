@@ -4,7 +4,7 @@ import Button from "../../Button/Button";
 import LoadingAnimation from "../../LoadingAnimation/LoadingAnimation";
 import Video from "../../Video/Video";
 import { useModalContext } from "../../../contexts/ModalContext";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
 import {
   usePrepareSendTransaction,
   useSendTransaction,
@@ -38,7 +38,7 @@ function CheckoutMembership() {
     approveUSDCIsLoading,
     approveUSDCError,
   } = useApprove(totalPrice);
-
+  const { openConnectModal } = useConnectModal();
   const {
     isWaitingMintSignatureFromUser,
     isMintTxSent,
@@ -271,19 +271,6 @@ function CheckoutMembership() {
                         </Button>
                       </div>
                       <Button size="small">
-                        {/* <CrossmintPayButton
-                          collectionId="ec3020f2-3fb8-40fb-8568-b876dd413e44"
-                          projectId="d49cba9a-f3f0-43d3-b626-cd21119dda5a"
-                          mintConfig={{
-                            // type: "erc-721",
-                            totalPrice: `${1}`,
-                            _to: "0xd423DCBd697164e282717009044312fDBC6C04f0",
-                            _quantity: `${quantityCount ? quantityCount : 0}`,
-                          }}
-                          environment="staging"
-                          mintTo="0xd423DCBd697164e282717009044312fDBC6C04f0"
-                          successCallbackURL="http://localhost:3000/crossmintpayload"
-                        /> */}
                         <CrossmintPayButton
                           collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
                           projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
@@ -322,13 +309,8 @@ function CheckoutMembership() {
                       </Button>
                     ) : (
                       <>
-                        <Button size="small">
-                          <ConnectButton
-                            coolMode
-                            label="Connect wallet"
-                            chainStatus="none"
-                            showBalance={false}
-                          />
+                        <Button connectWalletButton={true} size="small">
+                          <div onClick={openConnectModal}>J'ai un wallet</div>
                         </Button>
                         <div onClick={handleNoWalletButtonClick}>
                           <Button size="small">Je n'ai pas de wallet</Button>
