@@ -5,7 +5,15 @@ function Button({ handleClick, children, size, connectWalletButton }) {
     <>
       {connectWalletButton ? (
         <>
-          <div className={styles.button_container_small_connect_wallet}>{children}</div>
+          <div
+            className={
+              size === "xtra-small"
+                ? styles.button_container_xtra_small_connect_wallet
+                : styles.button_container_small_connect_wallet
+            }
+          >
+            {children}
+          </div>
         </>
       ) : (
         <>

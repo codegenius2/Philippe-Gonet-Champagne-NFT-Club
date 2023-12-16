@@ -112,6 +112,7 @@
 .checkout_membership_price_currency {
   font-weight: 400;
 }
+
 .checkout_membership_explanation_title {
   margin-top: 58px;
   color: #fff;
@@ -204,9 +205,69 @@
   height: 160px;
 }
 /* Conditionnal rendering: Modal for Tablet */
-/* .checkout_membership_container{
+
+.checkout_membership_container_tablet {
   display: flex;
-} */
+}
+.checkout_membership_video_and_selector_and_price_container_tablet {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+.checkout_membership_video_and_selector_container_tablet {
+  /* display: flex; */
+  display: flex;
+  flex-direction: column;
+}
+.checkout_membership_selector_bloc_container_tablet {
+  position: relative;
+  margin-top: 10px;
+}
+.checkout_membership_price_container_tablet {
+  margin-top: 27px;
+  display: flex;
+  justify-content: space-between;
+  width: 252px;
+  padding: 10px;
+  border-top: 1px solid var(--Green-100, #a1d884);
+  border-bottom: 1px solid var(--Green-100, #a1d884);
+  border-left: 1px solid var(--Green-100, #a1d884);
+  color: var(--Green-100, #a1d884);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.checkout_membership_selector_text_limitation_tablet {
+  font-size: 8px;
+  font-style: italic;
+  font-weight: 400;
+  width: 130px;
+  bottom: -10px;
+  position: absolute;
+}
+.checkout_membership_explanation_and_buttons_container_tablet {
+  max-width: 330px;
+  max-height: 315px;
+  width: 100%;
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.checkout_membership_explanation_tablet {
+  height: fit-content;
+}
+.checkout_membership_explanation_description_tablet {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  padding-top: 17px;
+}
+.checkout_membership_explanation_tablet > div {
+  margin-top: 0px;
+}
 @keyframes slideInFromTop {
   0% {
     transform: translateY(-50%);

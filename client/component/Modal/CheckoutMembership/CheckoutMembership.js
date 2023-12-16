@@ -27,7 +27,7 @@ function CheckoutMembership() {
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(PRICE);
   const [isNoWalletButtonClicked, setIsNoWalletButtonClicked] = useState(false);
-  const { setMintWithWalletSuccessull } = useModalContext();
+  const { setMintWithWalletSuccessull, windowWidth } = useModalContext();
   const { address, isConnected } = useAccount();
   const {
     isWaitingApproveUSDCSignatureFromUser,
@@ -125,7 +125,13 @@ function CheckoutMembership() {
         </>
       ) : (
         <>
-          <div className={styles.checkout_membership_container}>
+          <div
+            className={
+              windowWidth < 950
+                ? styles.checkout_membership_container_tablet
+                : styles.checkout_membership_container
+            }
+          >
             {isConnected && (
               <>
                 <div
@@ -143,183 +149,245 @@ function CheckoutMembership() {
                 </div>
               </>
             )}
+
             <div
               className={
-                styles.checkout_membership_video_and_selector_container
+                windowWidth < 950
+                  ? styles.checkout_membership_video_and_selector_and_price_container_tablet
+                  : ""
               }
             >
-              <Video size="xtra-small" />
               <div
-                className={styles.checkout_membership_selector_bloc_container}
+                className={
+                  windowWidth < 950
+                    ? styles.checkout_membership_video_and_selector_container_tablet
+                    : styles.checkout_membership_video_and_selector_container
+                }
               >
-                <div className={styles.checkout_membership_selector_title}>
-                  Quantité*
-                </div>
+                <Video size="xtra-small" />
                 <div
                   className={
-                    styles.checkout_membership_selector_counter_container
+                    windowWidth < 950
+                      ? styles.checkout_membership_selector_bloc_container_tablet
+                      : styles.checkout_membership_selector_bloc_container
                   }
                 >
-                  <div
-                    className={
-                      styles.checkout_membership_selector_counter_minus
-                    }
-                    onClick={handleCountMinusClick}
-                  >
-                    <span
-                      style={
-                        isMinusToggled ? { transform: "rotate(360deg)" } : {}
-                      }
-                    ></span>
+                  <div className={styles.checkout_membership_selector_title}>
+                    Quantité*
                   </div>
                   <div
                     className={
-                      styles.checkout_membership_selector_counter_quantity
+                      styles.checkout_membership_selector_counter_container
                     }
-                    key={quantityCount}
                   >
-                    {quantityCount}
+                    <div
+                      className={
+                        styles.checkout_membership_selector_counter_minus
+                      }
+                      onClick={handleCountMinusClick}
+                    >
+                      <span
+                        style={
+                          isMinusToggled ? { transform: "rotate(360deg)" } : {}
+                        }
+                      ></span>
+                    </div>
+                    <div
+                      className={
+                        styles.checkout_membership_selector_counter_quantity
+                      }
+                      key={quantityCount}
+                    >
+                      {quantityCount}
+                    </div>
+                    <div
+                      className={
+                        styles.checkout_membership_selector_counter_plus
+                      }
+                      onClick={handleCountPlusMinusClick}
+                    >
+                      <span
+                        style={
+                          isPlusToggled ? { transform: "rotate(360deg)" } : {}
+                        }
+                      ></span>
+                      <span
+                        style={
+                          isPlusToggled
+                            ? { transform: "translateX(-50%) rotate(270deg)" }
+                            : {}
+                        }
+                      ></span>
+                    </div>
                   </div>
                   <div
-                    className={styles.checkout_membership_selector_counter_plus}
-                    onClick={handleCountPlusMinusClick}
+                    className={
+                      windowWidth < 950
+                        ? styles.checkout_membership_selector_text_limitation_tablet
+                        : styles.checkout_membership_selector_text_limitation
+                    }
                   >
-                    <span
-                      style={
-                        isPlusToggled ? { transform: "rotate(360deg)" } : {}
-                      }
-                    ></span>
-                    <span
-                      style={
-                        isPlusToggled
-                          ? { transform: "translateX(-50%) rotate(270deg)" }
-                          : {}
-                      }
-                    ></span>
+                    *Limité à 2 par personnes maximum
                   </div>
                 </div>
+              </div>
+              <div
+                style={isConnected ? { marginBottom: "40px" } : {}}
+                className={
+                  windowWidth < 950
+                    ? styles.checkout_membership_price_container_tablet
+                    : styles.checkout_membership_price_container
+                }
+              >
                 <div
-                  className={
-                    styles.checkout_membership_selector_text_limitation
-                  }
+                  className={styles.checkout_membership_price}
+                  key={totalPrice}
                 >
-                  *Limité à 2 par personnes maximum
+                  {totalPrice}
+                </div>
+                <div className={styles.checkout_membership_price_currency}>
+                  USDC
                 </div>
               </div>
             </div>
             <div
-              style={isConnected ? { marginBottom: "40px" } : {}}
-              className={styles.checkout_membership_price_container}
+              className={
+                windowWidth < 950
+                  ? styles.checkout_membership_explanation_and_buttons_container_tablet
+                  : ""
+              }
             >
-              <div
-                className={styles.checkout_membership_price}
-                key={totalPrice}
-              >
-                {totalPrice}
-              </div>
-              <div className={styles.checkout_membership_price_currency}>
-                USDC
-              </div>
-            </div>
-            {!isConnected && (
-              <div className={styles.checkout_membership_explanation}>
-                <div className={styles.checkout_membership_explanation_title}>
-                  Le CLUB
-                </div>
+              {!isConnected && (
                 <div
-                  className={styles.checkout_membership_explanation_description}
+                  className={
+                    windowWidth < 950
+                      ? styles.checkout_membership_explanation_tablet
+                      : styles.checkout_membership_explanation
+                  }
                 >
-                  Le Club Membre Philippe Gonet propose une expérience exclusive
-                  offerte par la maison de champagne
+                  <div className={styles.checkout_membership_explanation_title}>
+                    Le CLUB
+                  </div>
+                  <div
+                    className={
+                      windowWidth < 950
+                        ? styles.checkout_membership_explanation_description_tablet
+                        : styles.checkout_membership_explanation_description
+                    }
+                  >
+                    {windowWidth < 950 ? (
+                      <>
+                        Le Club Membre Philippe Gonet propose une expérience
+                        exclusive offerte par la maison de champagne Philippe
+                        Gonet, réputée pour son engagement en faveur de
+                        l'excellence et de l'authenticité. Les membres
+                        bénéficient d'une collaboration privilégiée avec quatre
+                        chefs de renom, leur ouvrant la porte à des expériences
+                        gastronomiques exceptionnelles.
+                      </>
+                    ) : (
+                      <>
+                        Le Club Membre Philippe Gonet propose une expérience
+                        exclusive offerte par la maison de champagne
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className={styles.checkout_membership_buttons_container}>
-              {
-                // waitingWalletConnection ? (
-                //   <>
-                //     <div className={styles.checkout_membership_loading_container}>
-                //       <LoadingAnimation />
-                //     </div>
-                //   </>
-                // ) :
-                isConnected ? (
-                  <>
-                    <div
-                      className={
-                        styles.checkout_membership_payout_buttons_container
-                      }
-                    >
-                      <div onClick={approveUSDCMethod}>
-                        <Button size="small">
-                          <div>Payer avec mon wallet</div>
-                          <div
-                            className={
-                              styles.checkout_membership_payout_wallet_logo_container
-                            }
-                          >
-                            <img
-                              src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                              alt=""
-                            />
+              )}
+              <div className={styles.checkout_membership_buttons_container}>
+                {
+                  // waitingWalletConnection ? (
+                  //   <>
+                  //     <div className={styles.checkout_membership_loading_container}>
+                  //       <LoadingAnimation />
+                  //     </div>
+                  //   </>
+                  // ) :
+                  isConnected ? (
+                    <>
+                      <div
+                        className={
+                          styles.checkout_membership_payout_buttons_container
+                        }
+                      >
+                        <div onClick={approveUSDCMethod}>
+                          <Button size="small">
+                            <div>Payer avec mon wallet</div>
+                            <div
+                              className={
+                                styles.checkout_membership_payout_wallet_logo_container
+                              }
+                            >
+                              <img
+                                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                                alt=""
+                              />
 
-                            <img
-                              src="https://www.rainbowkit.com/rainbow.svg"
-                              alt=""
-                            />
-                          </div>
-                        </Button>
-                      </div>
-                      <Button size="small">
-                        <CrossmintPayButton
-                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
-                          mintConfig={{
-                            totalPrice: `${totalPrice}`,
-                            _quantity: `${quantityCount}`,
-                          }}
-                          environment="staging"
-                          mintTo={`${address}`}
-                          successCallbackURL="http://localhost:3000/crossmintpayload"
-                        />
-                        {/* <div>Payer par carte bancaire</div>
+                              <img
+                                src="https://www.rainbowkit.com/rainbow.svg"
+                                alt=""
+                              />
+                            </div>
+                          </Button>
+                        </div>
+                        <Button size="small">
+                          <CrossmintPayButton
+                            collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
+                            projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                            mintConfig={{
+                              totalPrice: `${totalPrice}`,
+                              _quantity: `${quantityCount}`,
+                            }}
+                            environment="staging"
+                            mintTo={`${address}`}
+                            successCallbackURL="http://localhost:3000/crossmintpayload"
+                          />
+                          {/* <div>Payer par carte bancaire</div>
                         <div>
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/crossmint.svg?alt=media&token=2383cc02-1f5c-43ff-8964-7a86ca450e0a"
                             alt=""
                           />
                         </div> */}
-                      </Button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {isNoWalletButtonClicked ? (
-                      <Button size="medium">
-                        <CrossmintPayButton
-                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
-                          mintConfig={{
-                            totalPrice: `${totalPrice}`,
-                            _quantity: `${quantityCount}`,
-                          }}
-                          environment="staging"
-                          successCallbackURL="http://localhost:3000/crossmintpayload"
-                        />
-                      </Button>
-                    ) : (
-                      <>
-                        <Button connectWalletButton={true} size="small">
-                          <div onClick={openConnectModal}>J'ai un wallet</div>
                         </Button>
-                        <div onClick={handleNoWalletButtonClick}>
-                          <Button size="small">Je n'ai pas de wallet</Button>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )
-              }
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {isNoWalletButtonClicked ? (
+                        <Button size="medium">
+                          <CrossmintPayButton
+                            collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
+                            projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                            mintConfig={{
+                              totalPrice: `${totalPrice}`,
+                              _quantity: `${quantityCount}`,
+                            }}
+                            environment="staging"
+                            successCallbackURL="http://localhost:3000/crossmintpayload"
+                          />
+                        </Button>
+                      ) : (
+                        <>
+                          <Button
+                            connectWalletButton={true}
+                            size={windowWidth < 950 ? "xtra-small" : "small"}
+                          >
+                            <div onClick={openConnectModal}>J'ai un wallet</div>
+                          </Button>
+                          <div onClick={handleNoWalletButtonClick}>
+                            <Button
+                              size={windowWidth < 950 ? "xtra-small" : "small"}
+                            >
+                              Je n'ai pas de wallet
+                            </Button>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )
+                }
+              </div>
             </div>
           </div>
         </>
