@@ -240,7 +240,11 @@ function CheckoutMembership() {
                 }
               >
                 <div
-                  className={styles.checkout_membership_price}
+                  className={
+                    windowWidth < 950
+                      ? styles.checkout_membership_price_tablet
+                      : styles.checkout_membership_price
+                  }
                   key={totalPrice}
                 >
                   {totalPrice}
@@ -294,7 +298,13 @@ function CheckoutMembership() {
                   </div>
                 </div>
               )}
-              <div className={styles.checkout_membership_buttons_container}>
+              <div
+                className={
+                  windowWidth
+                    ? styles.checkout_membership_buttons_container_tablet
+                    : styles.checkout_membership_buttons_container
+                }
+              >
                 {
                   // waitingWalletConnection ? (
                   //   <>

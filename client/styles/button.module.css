@@ -73,7 +73,7 @@
   transform: scale(0.9);
   transition-duration: 300ms;
 }
-/* Conditionnal rendering: If its connect wallet button */
+/* === Conditionnal rendering: If its connect wallet button === */
 .button_container_xtra_small_connect_wallet {
   max-width: 167px;
   width: 100%;

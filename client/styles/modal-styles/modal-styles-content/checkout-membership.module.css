@@ -189,11 +189,11 @@
   position: absolute;
   top: 12%;
   right: 13%;
-  width: 8px; /* Size of the dot */
-  height: 8px; /* Size of the dot */
-  background-color: var(--Green-100, #a1d884); /* Color of the dot */
-  border-radius: 50%; /* Makes it a circle */
-  animation: spin 2s linear infinite; /* Same animation as the loading circle */
+  width: 8px;
+  height: 8px;
+  background-color: var(--Green-100, #a1d884);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
 }
 
 .checkout_membership_payout_loading_mint_wallet_image_container img {
@@ -204,7 +204,7 @@
   width: 160px;
   height: 160px;
 }
-/* Conditionnal rendering: Modal for Tablet */
+/* === Conditionnal rendering: Modal for Tablet === */
 
 .checkout_membership_container_tablet {
   display: flex;
@@ -268,6 +268,14 @@
 .checkout_membership_explanation_tablet > div {
   margin-top: 0px;
 }
+.checkout_membership_buttons_container_tablet {
+  display: flex;
+  justify-content: space-between;
+}
+.checkout_membership_price_tablet {
+  letter-spacing: 6px;
+  animation: slideInFromTop 0.3s ease-out;
+}
 @keyframes slideInFromTop {
   0% {
     transform: translateY(-50%);
@@ -284,5 +292,32 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 750px) {
+  .checkout_membership_explanation_and_buttons_container_tablet {
+    margin-left: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .checkout_membership_explanation_and_buttons_container_tablet {
+    max-height: 360px;
+  }
+  .checkout_membership_buttons_container_tablet {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+  }
+}
+@media (max-width: 550px) {
+  .checkout_membership_explanation_and_buttons_container_tablet {
+    margin-left: 30px;
+  }
+  .checkout_membership_explanation_description_tablet {
+    font-size: 10px;
+  }
+  .checkout_membership_price_container_tablet {
+    width: 180px;
+    font-size: 30px;
   }
 }
