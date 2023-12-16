@@ -106,7 +106,6 @@ function CheckoutMembership() {
     }
     setTotalPrice(PRICE * quantityCount);
   }, [quantityCount]);
-
   return (
     <>
       {approveUSDCIsLoading ||
