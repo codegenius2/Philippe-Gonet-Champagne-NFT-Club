@@ -138,7 +138,7 @@
   border: 1px solid #a1d884;
   cursor: pointer;
 }
-.nft_minted_get_access_send_form_button_container{
+.nft_minted_get_access_send_form_button_container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -189,5 +189,15 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@media (max-width: 950px) {
+  .nft_minted_mail_reason_container {
+    margin-top: 30px;
+    /* background-color: rgb(26, 17, 17); */
+    height: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
   }
 }

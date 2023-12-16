@@ -60,6 +60,36 @@
   box-shadow: 2px 2px 30px 5px #a1d884;
   bottom: 0% !important;
 }
+.modal_container_nft_minted_tablet {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(21, 21, 21, 0.80); */
+  position: fixed;
+  width: 100vw;
+  /* height: 1000vh !important; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 99999 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+.modal_wrap_nft_minted_tablet {
+  position: relative;
+  width: 100%;
+  max-height: 700px;
+  height: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background: #000000;
+  z-index: 21320;
+  animation: slideUp 600ms both;
+  padding: 40px;
+  box-shadow: 2px 2px 30px 5px #a1d884;
+  bottom: 0% !important;
+}
 @keyframes bounceIn {
   0% {
     transform: translateX(-30vw);
