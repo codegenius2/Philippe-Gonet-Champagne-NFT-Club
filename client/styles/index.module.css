@@ -110,3 +110,17 @@
     left: 20vw;
   }
 }
+/* Mobile format */
+@media (max-width: 450px) {
+  .wrap {
+    max-width: 300px;
+  }
+  .home_philippe_gonet_logo {
+    top: 25vh;
+    left: 18vw;
+  }
+  .home_philippe_gonet_logo img {
+    width: 289.131px;
+    height: 289.131px;
+  }
+}

@@ -95,7 +95,7 @@
     font-size: 10px;
   }
   .faq_answer {
-    font-size: 11px;
+    font-size: 10px;
   }
   .faq_question_plus_button {
     width: 15px;
@@ -107,5 +107,17 @@
   }
   .faq_question_horizontal_line {
     width: 12.333px;
+  }
+}
+/* Mobile format */
+@media (max-width: 450px) {
+  .faq_title {
+    font-size: 13px;
+  }
+  .faq_question_and_plus_button div {
+    font-size: 9px;
+  }
+  .faq_answer {
+    font-size: 8.5px;
   }
 }
