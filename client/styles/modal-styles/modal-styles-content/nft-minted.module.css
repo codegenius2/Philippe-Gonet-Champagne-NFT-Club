@@ -101,11 +101,32 @@
 .nft_minted_get_access_discord_send_mail_button img {
   transform: scale(1.2);
 }
+.nft_minted_mail_reason_container {
+  background-color: rgb(26, 17, 17);
+  width: 410px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.nft_minted_mail_reason_container > div {
+  display: flex;
+}
+.nft_minted_checkbox_container {
+  width: 33.75px;
+  height: 33.75px;
+  border: 1px solid #a1d884;
+}
 .nft_minted_socials_description {
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   margin-top: 30px;
+}
+.nft_minted_socials_description > div {
+  width: 15px;
+  height: 15px;
+  background-color: blue;
+  border: 1px solid black;
 }
 .nft_minted_socials_logos_container {
   width: 100%;

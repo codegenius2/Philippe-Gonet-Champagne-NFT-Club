@@ -1,33 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+
 function NftMinted() {
+  const [checkboxState, setCheckboxState] = useState({
+    checkbox1: false,
+    checkbox2: false,
+  });
+  const animationURL =
+    "https://lottie.host/93e43ecb-ee95-4780-a6bd-dd26d40a0e0a/6M8E5VrpAK.json";
   const [email, setEmail] = useState({
     value: "",
     errorMessage: false,
     sent: false,
     loading: false,
   });
-  // const [launchAnimation, setLaunchAnimation] = useState();
+
+  function handleCheckboxClick(e) {
+    if (e.target.id === "checkbox1") {
+      setCheckboxState({ checkbox1: true, checkbox2: false });
+      return;
+    }
+    setCheckboxState({ checkbox1: false, checkbox2: true });
+  }
+
   function handleEmailChange(event) {
     const emailValue = event.target.value;
-    setEmail({ ...email, value: emailValue });
     const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
     setEmail({
       ...email,
       errorMessage: !emailRegex.test(emailValue)
         ? "Adresse e-mail invalide"
         : "",
+      value: emailValue,
     });
   }
-
   function handleKeyDown(event) {
-    // If there is no error message send it to backend
     if (event.key === "Enter" && !email.errorMessage) {
-      // verifyFormIsValid();
+      handleEmailPushToFirebase(event);
       console.log("call to database for send the mail ", email.errorMessage);
     }
   }
+  async function handleEmailPushToFirebase(e) {
+    e.preventDefault();
+    try {
+      const docRef = await addDoc(collection(db, "mail_address"), {
+        mail: email,
+        type: checkboxState.checkbox1
+          ? "SELF"
+          : checkboxState.checkbox2
+            ? "GIFT"
+            : "Sent without tell",
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
   return (
     <div className={styles.nft_minted_container}>
       <div className={styles.nft_minted_video_and_validation_message_container}>
@@ -57,7 +90,10 @@ function NftMinted() {
           onKeyDown={handleKeyDown}
           onChange={handleEmailChange}
         />
-        <div className={styles.nft_minted_get_access_discord_error_message}>
+        <div
+          onClick={handleEmailPushToFirebase}
+          className={styles.nft_minted_get_access_discord_error_message}
+        >
           {email.errorMessage && <p>{email.errorMessage}</p>}
         </div>
         <button
@@ -75,6 +111,52 @@ function NftMinted() {
             alt=""
           />
         </button>
+      </div>
+      <div className={styles.nft_minted_mail_reason_container}>
+        <div>
+          <span>Pour moi</span>
+          {checkboxState.checkbox1 ? (
+            <Player
+              autoplay
+              keepLastFrame
+              src={animationURL}
+              style={{ height: "33.75px", width: "33.75px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          ) : (
+            <div
+              onClick={handleCheckboxClick}
+              id="checkbox1"
+              className={styles.nft_minted_checkbox_container}
+            ></div>
+          )}
+        </div>
+        <div>
+          <span>Pour offrir</span>
+          {checkboxState.checkbox2 ? (
+            <Player
+              autoplay
+              keepLastFrame
+              src={animationURL}
+              style={{ height: "33.75px", width: "33.75px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          ) : (
+            <div
+              onClick={handleCheckboxClick}
+              id="checkbox2"
+              className={styles.nft_minted_checkbox_container}
+            ></div>
+          )}
+        </div>
       </div>
       <div className={styles.nft_minted_socials_description}>
         Suivez-nous sur nos réseaux sociaux

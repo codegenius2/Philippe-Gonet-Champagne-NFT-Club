@@ -21,7 +21,10 @@ const Home: NextPage = () => {
   }
   const { mintWithWalletSuccessFull, setMintWithWalletSuccessull } =
     useModalContext();
+<<<<<<< HEAD
   // const { crossmintPayloadLocationdata } = useCrossmintPayloadContext();
+=======
+>>>>>>> main
   const [crossmintPayLoadLocalStorage, setCrossmintPayLoadLocalStorage] =
     useState(null);
 
@@ -75,7 +78,11 @@ const Home: NextPage = () => {
         </div>
         {isMintButtonClicked && (
           <Modal setState={setIsMintButtonClicked}>
-            {mintWithWalletSuccessFull ? <NftMinted /> : <CheckoutMembership />}
+            {!mintWithWalletSuccessFull ? (
+              <NftMinted />
+            ) : (
+              <CheckoutMembership />
+            )}
           </Modal>
         )}
       </div>
