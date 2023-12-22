@@ -13,19 +13,18 @@
 }
 
 .home_circle_background_top {
-  position: absolute;
+  position: fixed;
   left: 8.60280659vw;
   top: -446px;
   width: 774px;
   height: 774px;
   border-radius: 47.223917%;
   opacity: 0.16;
-
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
 }
 .home_circle_background_middle_left {
-  position: absolute;
+  position: fixed;
   left: 0vw;
 
   top: 327px;
@@ -48,7 +47,7 @@
   height: 389.131px;
 }
 .home_circle_background_middle_right {
-  position: absolute;
+  position: fixed;
   right: -400px;
   top: 521px;
   width: 774px;

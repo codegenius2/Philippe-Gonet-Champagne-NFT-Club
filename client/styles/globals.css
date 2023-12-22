@@ -15,15 +15,23 @@ body {
     Helvetica Neue,
     sans-serif;
   background-color: #000;
-  max-width: 100vw;
-  overflow-x: hidden;
+  /* max-width: 100vw; */
+
+  /* overflow-x: hidden; */
   /* overflow-y: hidden; */
   color: #fff;
+  /* background-color: green; */
   /* display: flex;
   justify-content: center; */
   font-family: "red-hat-display";
   scroll-behavior: smooth !important;
 }
+html{
+  /* background-color: yellow; */
+}
+/* body {
+  background-color: green;
+} */
 body::-webkit-scrollbar {
   display: none;
 }
@@ -68,10 +76,11 @@ html {
 }
 .page-container {
   /* background-color: red; */
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
-  overflow-x: visible;
+  overflow-x: hidden !important;
+  /* background-color: red; */
 }
 .progress-bar {
   position: fixed;
